@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: NoftScarlet/mwc-gatsby-netlifycms
+  repo: NoftScarlet/mwc-mwc-gatsby-netlifycms
 
 media_folder: static/img
 public_folder: /img
