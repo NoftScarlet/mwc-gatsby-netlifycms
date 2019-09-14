@@ -1,6 +1,6 @@
 ---
 templateKey: product-page
-title: Our Coffees
+title: 'Our Coffeez '
 image: /img/jumbotron.jpg
 heading: Great coffee with a conscience
 description: >-
