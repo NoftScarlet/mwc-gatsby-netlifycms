@@ -15,7 +15,12 @@ export const IndexPageTemplate = ({
   description,
   intro,
 }) => (
+
   <div>
+      <h1 style="text-align:center; color:black; opacity:0.6; font-family:'pavanam';">
+          <strong>Musicians' Wellness Centre<br/>
+          Centre du bien-être des musiciens</strong>
+      </h1>
     <div
       className="full-width-image margin-top-0"
       style={{
