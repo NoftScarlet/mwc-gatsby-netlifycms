@@ -17,7 +17,12 @@ export const IndexPageTemplate = ({
 }) => (
 
   <div>
-      <h1 style="text-align:center; color:black; opacity:0.6; font-family:'pavanam';">
+      <h1 style={{
+          textAlign:'center',
+          color:'black',
+          opacity:'0.6',
+          fontFamily:'pavanam'
+      }}>
           <strong>Musicians' Wellness Centre<br/>
           Centre du bien-être des musiciens</strong>
       </h1>
