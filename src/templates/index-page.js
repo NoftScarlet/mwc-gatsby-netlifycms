@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby'
 import remark from 'remark';
 import recommended from 'remark-preset-lint-recommended';
 import remarkHtml from 'remark-html';
+import DOMPurify from 'dompurify';
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
@@ -138,6 +139,7 @@ const IndexPage = ({ data }) => {
   console.log(htmlDescription)
 
   //Read markdown as HTML from frontmatter. ref - https://github.com/gatsbyjs/gatsby/issues/5021
+    // after we get HTML string, we sanitize the string with DOMPurify and them pass to innerHTML. This way we can prevent XSS
 
   return (
     <Layout>
