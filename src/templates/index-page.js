@@ -4,11 +4,13 @@ import { Link, graphql } from 'gatsby'
 import remark from 'remark';
 import recommended from 'remark-preset-lint-recommended';
 import remarkHtml from 'remark-html';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify'
+
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+
 
 
 export const IndexPageTemplate = ({
@@ -90,7 +92,7 @@ export const IndexPageTemplate = ({
                       {heading}
                     </h3>
                       <div dangerouslySetInnerHTML={{ __html: description }} />
-                        /* The description here is already sanitized to prevent XSS */
+
                   </div>
                 </div>
                 <Features gridItems={intro.blurbs} />
@@ -135,8 +137,10 @@ IndexPageTemplate.propTypes = {
 const IndexPage = ({ data }) => {
 
   const { frontmatter } = data.markdownRemark;
-  const  htmlDescription  = remark().use(recommended).use(remarkHtml).processSync(data.markdownRemark.frontmatter.description).toString();
-  const sanitizedString = DOMPurify(htmlDescription);
+
+  let htmlDescription  = remark().use(recommended).use(remarkHtml).processSync(data.markdownRemark.frontmatter.description).toString();
+  let sanitizedString =  DOMPurify.sanitize(htmlDescription)
+  console.log(sanitizedString)
 
   //Read markdown as HTML from frontmatter. ref - https://github.com/gatsbyjs/gatsby/issues/5021
     // after we get HTML string, we sanitize the string with DOMPurify and them pass to innerHTML. This way we can prevent XSS
