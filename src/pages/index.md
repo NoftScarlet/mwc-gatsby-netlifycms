@@ -1,10 +1,10 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: Great coffee with a conscience 
 image: /img/home-jumbotron.jpg
-heading: Our Mission
+heading: Our Mission 
 subheading: Support sustainable farming while enjoying a cup
-description: >-
+description: |
   The centre aims to educate, conduct research, and provide treatment related to musicians’ wellness. 
   With the widespread presence of [physical pain, performance anxiety, hearing loss, and visual problems](https://www.google.com) 
   among musicians, the need for specialized training and treatment is on the rise. 

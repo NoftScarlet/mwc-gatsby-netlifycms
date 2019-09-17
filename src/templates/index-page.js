@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import remark from 'remark';
+import recommended from 'remark-preset-lint-recommended';
+import remarkHtml from 'remark-html';
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+
 
 export const IndexPageTemplate = ({
   image,
   title,
   heading,
   subheading,
-  mainpitch,
   description,
   intro,
 }) => (
@@ -85,7 +88,7 @@ export const IndexPageTemplate = ({
                     <h3 className="has-text-weight-semibold is-size-2">
                       {heading}
                     </h3>
-                    <p>{description}</p>
+                      <div dangerouslySetInnerHTML={{ __html: description }} />
                   </div>
                 </div>
                 <Features gridItems={intro.blurbs} />
@@ -121,15 +124,20 @@ IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   heading: PropTypes.string,
   subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
-}
+};
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+
+  const { frontmatter } = data.markdownRemark;
+
+  const  htmlDescription  = remark().use(recommended).use(remarkHtml).processSync(data.markdownRemark.frontmatter.description).toString();
+  console.log(htmlDescription)
+
+  //Read markdown as HTML from frontmatter. ref - https://github.com/gatsbyjs/gatsby/issues/5021
 
   return (
     <Layout>
@@ -138,13 +146,12 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
+        description={htmlDescription}
         intro={frontmatter.intro}
       />
     </Layout>
   )
-}
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
