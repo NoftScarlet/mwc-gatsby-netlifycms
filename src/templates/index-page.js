@@ -138,9 +138,11 @@ const IndexPage = ({ data }) => {
 
   const { frontmatter } = data.markdownRemark;
 
+
   let htmlDescription  = remark().use(recommended).use(remarkHtml).processSync(data.markdownRemark.frontmatter.description).toString();
+  /*
   let sanitizedString =  DOMPurify.sanitize(htmlDescription)
-  console.log(sanitizedString)
+  console.log(sanitizedString)*/
 
   //Read markdown as HTML from frontmatter. ref - https://github.com/gatsbyjs/gatsby/issues/5021
     // after we get HTML string, we sanitize the string with DOMPurify and them pass to innerHTML. This way we can prevent XSS
@@ -152,7 +154,7 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
-        description={sanitizedString}
+        description={htmlDescription}
         intro={frontmatter.intro}
       />
     </Layout>
