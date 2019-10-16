@@ -43,7 +43,7 @@ const Navbar = class extends React.Component {
         role="navigation"
         aria-label="main-navigation"
       >
-        <NavMenu />
+
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
@@ -60,6 +60,7 @@ const Navbar = class extends React.Component {
               <span />
             </div>
           </div>
+          <NavMenu />
           <div
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
