@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import NavMenu from './NavMenu'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -34,11 +37,13 @@ const Navbar = class extends React.Component {
 
   render() {
     return (
+
       <nav
         className="navbar is-transparent"
         role="navigation"
         aria-label="main-navigation"
       >
+        <NavMenu />
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
@@ -59,9 +64,10 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
+
             <div className="navbar-start has-text-centered">
               <Link className="navbar-item" to="/about">
-                About
+                About Us
               </Link>
               <Link className="navbar-item" to="/products">
                 Products
