@@ -1,0 +1,41 @@
+{
+  "name": "mwc-gatsby-netlifycms",
+  "version": "1.0.0",
+  "repository": "https://github.com/NoftScarlet/mwc-gatsby-netlifycms.git",
+  "author": "<ychen239@uottawa.ca>",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "gatsby build --prefix-paths",
+    "serve": "gatsby serve",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+  },
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^3.0.0-alpha.10",
+    "final-form": "^4.18.5",
+    "gatsby": "latest",
+    "gatsby-cli": "^2.8.1",
+    "gatsby-plugin-material-ui": "latest",
+    "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-remove-serviceworker": "^1.0.0",
+    "gatsby-plugin-stylus": "^2.0.7",
+    "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-transformer-remark": "^2.6.30",
+    "gh-pages": "^2.0.1",
+    "jss": "^9.8.7",
+    "markdown-to-jsx": "^6.10.3",
+    "mdi-material-ui": "^5.10.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-final-form": "^6.3.0",
+    "react-helmet": "^5.2.0",
+    "react-jss": "^8.6.1",
+    "react-swipeable-views": "^0.13.1",
+    "react-swipeable-views-utils": "^0.13.1",
+    "validator": "^11.1.0"
+  }
+}
