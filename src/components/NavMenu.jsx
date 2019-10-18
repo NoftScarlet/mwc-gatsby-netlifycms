@@ -17,8 +17,8 @@ const NavMenu = (props) => {
                 </DropdownToggle>
                 <DropdownMenu>
 
-                    <DropdownItem disabled>Education</DropdownItem>
-                    <DropdownItem disabled>Research</DropdownItem>
+                    <DropdownItem href={"/about/education"}>Education</DropdownItem>
+                    <DropdownItem >Research</DropdownItem>
                     <DropdownItem >Clinic</DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>FAQs</DropdownItem>

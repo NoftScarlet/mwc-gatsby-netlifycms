@@ -5,6 +5,7 @@ import remark from 'remark';
 import recommended from 'remark-preset-lint-recommended';
 import remarkHtml from 'remark-html';
 import DOMPurify from 'dompurify'
+import HomeCarousel from '../components/HomeCarousel'
 
 
 import Layout from '../components/Layout'
@@ -23,7 +24,8 @@ export const IndexPageTemplate = ({
 }) => (
 
   <div>
-      <h1 style={{
+
+      <h2 style={{
           textAlign:'center',
           color:'black',
           opacity:'0.6',
@@ -31,71 +33,27 @@ export const IndexPageTemplate = ({
       }}>
           <strong>Musicians' Wellness Centre<br/>
           Centre du bien-être des musiciens</strong>
-      </h1>
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
-        }}
-      >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
-      </div>
-    </div>
+      </h2>
+
+    <HomeCarousel />
     <section className="section section--gradient">
       <div className="container">
         <div className="section">
           <div className="columns">
-            <div className="column is-10 is-offset-1">
+            <div className="column is-12">
               <div className="content">
                 <div className="columns">
                   <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
+                    <h3 style={{textAlign:'center'}} className="has-text-weight-semibold is-size-2">
                       {heading}
                     </h3>
+
                       <div dangerouslySetInnerHTML={{ __html: description }} />
 
                   </div>
                 </div>
                 <Features gridItems={intro.blurbs} />
+
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/products">
@@ -104,8 +62,8 @@ export const IndexPageTemplate = ({
                   </div>
                 </div>
                 <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
+                  <h3 style={{textAlign:'center'}} className="has-text-weight-semibold is-size-2">
+                    Latest news
                   </h3>
                   <BlogRoll />
                   <div className="column is-12 has-text-centered">
@@ -120,6 +78,56 @@ export const IndexPageTemplate = ({
         </div>
       </div>
     </section>
+      <div
+          className="full-width-image margin-top-0"
+          style={{
+              backgroundImage: `url(${
+                  !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+                  })`,
+              backgroundPosition: `top left`,
+              backgroundAttachment: `fixed`,
+          }}
+      >
+
+          <div
+              style={{
+                  display: 'flex',
+                  height: '150px',
+                  lineHeight: '1',
+                  justifyContent: 'space-around',
+                  alignItems: 'left',
+                  flexDirection: 'column',
+              }}
+          >
+
+              <h1
+                  className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+                  style={{
+                      boxShadow:
+                          'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
+                      backgroundColor: 'rgb(255, 68, 0)',
+                      color: 'white',
+                      lineHeight: '1',
+                      padding: '0.25em',
+                  }}
+              >
+                  {title}
+              </h1>
+              <h3
+                  className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+                  style={{
+                      boxShadow:
+                          'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
+                      backgroundColor: 'rgb(255, 68, 0)',
+                      color: 'white',
+                      lineHeight: '1',
+                      padding: '0.25em',
+                  }}
+              >
+                  {subheading}
+              </h3>
+          </div>
+      </div>
   </div>
 )
 
