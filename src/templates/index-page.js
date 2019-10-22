@@ -48,11 +48,26 @@ export const IndexPageTemplate = ({
                       {heading}
                     </h3>
 
-                      <div dangerouslySetInnerHTML={{ __html: description }} />
+                      <div style={{textAlign:'justify', fontSize:'1.15rem'}} dangerouslySetInnerHTML={{ __html: description }} />
 
                   </div>
                 </div>
                 <Features gridItems={intro.blurbs} />
+
+                  <div className="gallery" id="gallery">
+                      <div className="all animation mb-3 pics 2"><img alt="Card image cap" className="img-fluid"
+                                                                      src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg"/></div>
+                      <div className="all animation mb-3 pics 1"><img alt="Card image cap" className="img-fluid"
+                                                                      src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg"/></div>
+                      <div className="all animation mb-3 pics 1"><img alt="Card image cap" className="img-fluid"
+                                                                      src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg"/></div>
+                      <div className="all animation mb-3 pics 2"><img alt="Card image cap" className="img-fluid"
+                                                                      src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"/></div>
+                      <div className="all animation mb-3 pics 2"><img alt="Card image cap" className="img-fluid"
+                                                                      src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"/></div>
+                      <div className="all animation mb-3 pics 1"><img alt="Card image cap" className="img-fluid"
+                                                                      src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg"/></div>
+                  </div>
 
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
@@ -206,6 +221,7 @@ export const pageQuery = graphql`
               publicURL
             }
             text
+            link
           }
           heading
           description

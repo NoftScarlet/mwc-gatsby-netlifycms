@@ -66,7 +66,7 @@ const HomeCarousel = (props) => {
                     backgroundSize: 'cover',
                     height: 'auto !important',
                     margin: '0 auto',
-                    minHeight: '600px',
+                    minHeight: '560px',
                     width: '100%',
                     paddingTop: '0',
                     position: 'relative',
