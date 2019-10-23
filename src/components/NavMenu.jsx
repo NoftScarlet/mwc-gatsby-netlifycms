@@ -1,49 +1,50 @@
-import React, { useState } from 'react';
-import { Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import React, {useState} from 'react';
+import {Navbar, Button, ButtonGroup, UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 const NavMenu = (props) => {
-    const [dropdownOpen, setOpen] = useState(false);
-
-    const toggle = () => setOpen(!dropdownOpen);
 
     return (
         <div>
+            <Navbar color="light" light expand="md">
+                <ButtonGroup>
+                    <Button outline color="secondary">Home</Button>{' '}
 
-            <Button color="info">Home</Button>{' '}
+                    <UncontrolledButtonDropdown>
+                        <DropdownToggle caret outline color="secondary" >
+                            About Us
+                        </DropdownToggle>
 
-            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret color={"info"}>
-                    Button Dropdown
-                </DropdownToggle>
-                <DropdownMenu>
+                        <DropdownMenu>
 
-                    <DropdownItem href={"/about/education"}>Education</DropdownItem>
-                    <DropdownItem >Research</DropdownItem>
-                    <DropdownItem >Clinic</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>FAQs</DropdownItem>
-                </DropdownMenu>
-            </ButtonDropdown>
+                            <DropdownItem href={"/about/education"}>Education</DropdownItem>
+                            <DropdownItem>Research</DropdownItem>
+                            <DropdownItem>Clinic</DropdownItem>
+                            <DropdownItem divider/>
+                            <DropdownItem>FAQs</DropdownItem>
+                        </DropdownMenu>
+                    </UncontrolledButtonDropdown>
 
-            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret color={"info"}>
-                    Button Dropdown
-                </DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem disabled>Directors</DropdownItem>
-                    <DropdownItem disabled>Administrators</DropdownItem>
-                    <DropdownItem >Practitioners and Educators</DropdownItem>
-                    <DropdownItem>Researchers</DropdownItem>
-                </DropdownMenu>
-            </ButtonDropdown>
+                    <UncontrolledButtonDropdown>
+                        <DropdownToggle caret outline color="secondary">
+                            Team
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem disabled>Directors</DropdownItem>
+                            <DropdownItem disabled>Administrators</DropdownItem>
+                            <DropdownItem>Practitioners and Educators</DropdownItem>
+                            <DropdownItem>Researchers</DropdownItem>
+                        </DropdownMenu>
+                    </UncontrolledButtonDropdown>
 
-            <Button color="info">Services</Button>{' '}
+                    <Button outline color="secondary">Services</Button>{' '}
 
-            <Button color="info">Activities</Button>{' '}
+                    <Button outline color="secondary">Activities</Button>{' '}
 
-            <Button color="info">Contact</Button>{' '}
+                    <Button outline color="secondary">Contact</Button>{' '}
 
-            <Button color="info">Donate</Button>{' '}
+                    <Button outline color="info">Donate</Button>{' '}
+                </ButtonGroup>
+            </Navbar>
         </div>
     );
 }

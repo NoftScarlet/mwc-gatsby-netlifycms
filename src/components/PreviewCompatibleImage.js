@@ -7,7 +7,7 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
   const imageStyle = { borderRadius: '5px', height:'160px'}
   const { alt = '', childImageSharp, image } = imageInfo
 
-  if (!childImageSharp ) {
+  if (!childImageSharp && image.publicURL ) {
     console.log(image.publicURL)
     return <img src={image.publicURL} style={imageStyle}/>
 

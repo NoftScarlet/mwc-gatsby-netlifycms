@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+
+@mixin button-outline-variant($color) {
+  border-color: $color;
+}
+
+.btn-outline-secondary {
+  @include button-outline-variant($light);
+}

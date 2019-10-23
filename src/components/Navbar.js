@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 import NavMenu from './NavMenu'
+import {Navbar as Navbarz} from 'reactstrap'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ const Navbar = class extends React.Component {
 
   render() {
     return (
+        <Navbarz>
       <nav
         className="navbar is-transparent"
         role="navigation"
@@ -60,14 +62,7 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-            </div>
+
             <NavMenu />
             <div className="navbar-end has-text-centered">
               <a
@@ -84,6 +79,7 @@ const Navbar = class extends React.Component {
           </div>
         </div>
       </nav>
+        </Navbarz>
     )
   }
 }
