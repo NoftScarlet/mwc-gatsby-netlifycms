@@ -36,7 +36,6 @@ heading2: (Imaginary content) Story of the Centre
 description2: |
   Where did the ideal came from? How will the centre benefit musicians? What are the researches being conducted? 
   Check out the interviews and media coverage below to find out answer. 
-  Have other questions? Visit our FAQs page, our contact us at mwc@uottawa.ca
 intro2:
   blurbs:
     - image: /img/educationICON.svg
@@ -57,4 +56,6 @@ intro2:
     java’s origin and support the farmers that grew it. We take coffee
     production, roasting and brewing seriously and we’re glad to pass that
     knowledge to anyone. This is an edit via identity...
+heading3: Still have questions?
+description3: Please visit our FAQs page, our contact us at mwc@uottawa.ca.
 ---

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import { Button } from 'reactstrap';
 
+
 const FeatureGrid = ({ gridItems }) => (
   <div className="columns flex-wrap">
 

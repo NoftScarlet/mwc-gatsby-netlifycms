@@ -58,13 +58,7 @@ export const IndexPageTemplate = ({
 
 
 
-                                <div className="columns">
-                                    <div className="column is-12 has-text-centered">
-                                        <Link className="btn" to="/products">
-                                            See all products
-                                        </Link>
-                                    </div>
-                                </div>
+
                                 <div className="column is-12">
                                     <h3 style={{textAlign: 'center'}} className="has-text-weight-semibold is-size-2">
                                         Recent updates
@@ -145,17 +139,31 @@ export const IndexPageTemplate = ({
                 <h1
                     className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
                     style={{
-                        boxShadow:
-                            'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-                        backgroundColor: 'rgb(255, 68, 0)',
+
+                        backgroundColor: 'rgba(0, 0, 0, 0.3)',
                         color: 'white',
-                        lineHeight: '1',
-                        padding: '0.25em',
+                        lineHeight: '1.2',
+                        padding: '0.5em',
                     }}
                 >
-                    {title}
+                    Still have questions?
                 </h1>
+
+                <p
+                    className=""
+                    style={{
+                        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                        color: 'white',
+                        lineHeight: '0.5',
+                        padding: '0.25em',
+                        fontSize: '25pt'
+                    }}
+                >
+                    Visit our FAQs page our contact us at xxxx
+                </p>
             </div>
+
+
         </div>
     </div>
 )
