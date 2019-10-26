@@ -16,6 +16,7 @@ import searchIcon from '../../static/img/search.png'
 const NavMenu = (props) => {
 
     return (
+
         <div className={"navbar-end"}>
             <Navbar color="light" light expand="md">
                 <ButtonGroup>
@@ -59,22 +60,25 @@ const NavMenu = (props) => {
 
 
                 </ButtonGroup>
+                <ButtonGroup>
+
+                <div >
+                    <img className={"search"} src={searchIcon}/>
+
+                    <img className={"search"} src={twitterIcon}/>
+                    <br />
+                    <img className={"search"} src={langEn}/>
+
+                    <img className={"search"} src={facebookIcon}/>
+                </div>
 
 
-
+                </ButtonGroup>
 
             </Navbar>
 
 
-            <div >
-                <img className={"search"} src={searchIcon}/>
 
-                <img className={"search"} src={twitterIcon}/>
-                <br />
-                <img className={"search"} src={langEn}/>
-
-                <img className={"search"} src={facebookIcon}/>
-            </div>
         </div>
     );
 }

@@ -25,16 +25,6 @@ export const IndexPageTemplate = ({
 
     <div>
 
-        <h2 style={{
-            textAlign: 'center',
-            color: 'black',
-            opacity: '0.6',
-            fontFamily: 'pavanam'
-        }}>
-            <strong>Musicians' Wellness Centre<br/>
-                Centre du bien-être des musiciens</strong>
-        </h2>
-
         <HomeCarousel/>
         <section className="section section--gradient">
             <div className="container">
@@ -49,7 +39,7 @@ export const IndexPageTemplate = ({
                                             {heading}
                                         </h3>
 
-                                        <div style={{textAlign: 'justify', fontSize: '1.15rem'}}
+                                        <div style={{textAlign: 'left', fontSize: '1.15rem', }}
                                              dangerouslySetInnerHTML={{__html: description}}/>
 
                                     </div>

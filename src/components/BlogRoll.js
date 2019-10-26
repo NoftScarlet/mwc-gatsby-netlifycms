@@ -20,30 +20,24 @@ class BlogRoll extends React.Component {
               >
                 <header>
                   {post.frontmatter.featuredimage ? (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${
-                            post.title
-                          }`,
-                        }}
-                      />
-                    </div>
+                      <div>
+                        <img src={post.frontmatter.featuredimage.publicURL} />
+                      </div>
                   ) : null}
-                  <p className="post-meta">
-                    <Link
+                </header>
+                <p className="post-meta">
+                  <Link
                       className="title has-text-primary is-size-4"
                       to={post.fields.slug}
-                    >
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
+                  >
+                    {post.frontmatter.title}
+                  </Link>
+                  <span> &bull; </span>
+                  <span className="subtitle is-size-5 is-block">
                       {post.frontmatter.date}
                     </span>
-                  </p>
-                </header>
+                </p>
+
                 <p>
                   {post.excerpt}
                   <br />
@@ -94,6 +88,7 @@ export default () => (
                       ...GatsbyImageSharpFluid
                     }
                   }
+                  publicURL
                 }
               }
             }

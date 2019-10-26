@@ -6,22 +6,25 @@ import {
     CarouselIndicators,
     CarouselCaption
 } from 'reactstrap';
+import mwc1 from '../../static/img/mwc1.jpg'
+import mwc2 from '../../static/img/mwc2.jpg'
+import mwc3 from '../../static/img/mwc3.jpg'
 
 
 
 const items = [
     {
-        src: "https://piano.uottawa.ca/mwc/img/cover.jpg",
+        src: mwc1,
         altText: 'Slide 1',
         caption: 'Slide 1'
     },
     {
-        src: "http://piano.uottawa.ca/wp-content/uploads/2019/04/labinterview.jpg",
+        src: mwc2,
         altText: 'Slide 2',
         caption: 'Slide 2'
     },
     {
-        src: "https://piano.uottawa.ca/wp-content/uploads/2019/04/thekey.jpg",
+        src: mwc3,
         altText: 'Slide 3',
         caption: 'Slide 3'
     }
@@ -66,7 +69,7 @@ const HomeCarousel = (props) => {
                     backgroundSize: 'cover',
                     height: 'auto !important',
                     margin: '0 auto',
-                    minHeight: '560px',
+                    minHeight: '700px',
                     width: '100%',
                     paddingTop: '0',
                     position: 'relative',

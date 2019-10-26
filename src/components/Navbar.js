@@ -22,6 +22,18 @@ const Navbar = class extends React.Component {
 
                 <a href={"/"}>
                     <img className={"logo"} src={logo} alt={"Musician's Wellness Centre logo"}/>
+                    <span>
+                    <h3 style={{
+                        marginLeft:'10px',
+                        textAlign: 'center',
+                        color: 'black',
+                        opacity: '0.6',
+                        fontFamily:'pavman',
+                        display:'inline-block'
+                    }}>
+                        <strong>Musicians' Wellness Centre<br/></strong>
+                    </h3>
+                    </span>
                 </a>
 
                 <NavMenu/>

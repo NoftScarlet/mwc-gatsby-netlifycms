@@ -9,9 +9,9 @@ const FeatureGrid = ({ gridItems }) => (
 
     {gridItems.map(item => (
 
-      <div key={item.text} className="column d-sm-flex">
+      <div key={item.text} className="column d-sm-flex grid-items">
           <Button href={item.link} color="light">
-        <section className="section" style={{textAlign:"center"}}>
+        <section className="section">
 
           <div className="has-text-centered">
             <div
@@ -21,7 +21,9 @@ const FeatureGrid = ({ gridItems }) => (
               }}
             >
               <PreviewCompatibleImage imageInfo={item} />
+
             </div>
+              <p><br /></p>
 
           </div>
 

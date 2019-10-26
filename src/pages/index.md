@@ -13,15 +13,15 @@ description: |
   We serve music students and teachers, professors, professional musicians, amateur musicians, health care professionals, policy makers and managers, and the general public. 
 intro:
   blurbs:
-    - image: /img/educationICON.svg
+    - image: /img/notebook.png
       text: >
         We offer educational programs for musicians aimed at encouraging healthy habits.
       link: /about/education
-    - image: /img/researchICON.svg
+    - image: /img/brain.png
       text: >
         We promote advanced research in the area of musicians' wellness.
       link: /about/research
-    - image: /img/clinicICON.svg
+    - image: /img/yoga.png
       text: >
         We provide a variety of physical and mental treatments for musicians.
       link: /about/clinic
