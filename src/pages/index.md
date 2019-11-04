@@ -2,6 +2,7 @@
 templateKey: index-page
 title: Musicians' Wellness Centre
 image: /img/home-jumbotron.jpg
+path: /
 
 heading: Our Mission 
 description: |
