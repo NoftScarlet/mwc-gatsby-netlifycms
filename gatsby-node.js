@@ -33,9 +33,11 @@ exports.createPages = ({ actions, graphql }) => {
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(edge => {
-      const id = edge.node.id
+      const id = edge.node.id;
       createPage({
-        path: edge.node.fields.slug, // ? edge.node.fields.slug : _.kebabCase(_.deburr(edge.node.frontmatter.title)),
+        //path: edge.node.fields.slug, <- original
+        //Now let's redefine how our path should be created. If the path is specified in frontmatter, use the specified. Otherwise, the end of the path should be converted from page title.
+        path: edge.node.frontmatter.path ? edge.node.frontmatter.path : _.kebabCase(_.deburr(edge.node.frontmatter.title)),
         tags: edge.node.frontmatter.tags,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
