@@ -17,6 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               title
+              path
               tags
               templateKey
             }
@@ -34,10 +35,13 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach(edge => {
       const id = edge.node.id;
+      const name = edge.node.fileAbsolutePath;
+      console.log(edge.node.fields.slug),
       createPage({
         //path: edge.node.fields.slug, <- original
-        //Now let's redefine how our path should be created. If the path is specified in frontmatter, use the specified. Otherwise, the end of the path should be converted from page title.
-        path: edge.node.frontmatter.path ? edge.node.frontmatter.path : _.kebabCase(_.deburr(edge.node.frontmatter.title)),
+        //Now let's redefine how our path should be created. If the path is specified in frontmatter, use the specified. Otherwise, the end of the path will be converted from page title. If title not specified, the path is markdown filename + lang-code
+        path: edge.node.fields.slug,
+        //path: edge.node.frontmatter.path ? (edge.node.fields.slug + edge.node.frontmatter.path) : (edge.node.frontmatter.title ? _.kebabCase(_.deburr(edge.node.fields.slug + edge.node.frontmatter.title)) : id),
         tags: edge.node.frontmatter.tags,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
@@ -75,16 +79,16 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-  fmImagesToRelative(node) // convert image paths for gatsby images
 
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
+  fmImagesToRelative(node) // convert image paths for gatsby images
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value
     })
   }
 }
