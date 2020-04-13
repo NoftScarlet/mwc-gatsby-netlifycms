@@ -33,15 +33,22 @@ class AboutEducationTemplate extends React.Component {
     state = {
         exampleModal: false,
         masterProgramModal: false,
-        fourCourseModal:false,
-        workshopsModal:false,
-        masterclassModal:false
+        fourCourseModal: false,
+        workshopsModal: false,
+        masterclassModal: false,
+        displayNone: "display-none",
     };
     toggleModal = state => {
         this.setState({
             [state]: !this.state[state]
         });
     };
+
+    readMore = state => {
+        this.setState({
+            [state]: ""
+        })
+    }
 
     componentDidMount() {
         document.documentElement.scrollTop = 0;
@@ -56,34 +63,56 @@ class AboutEducationTemplate extends React.Component {
                 <main ref="main">
                     <div className="position-relative">
                         {/* shape Hero */}
-                        <section className="section section-shaped ext-large">
+                        <section className="section section-shaped ext-large" style={{
+                            backgroundImage: 'linear-gradient(rgba(114, 105, 80, 0.37), rgba(0, 0, 0, 0.5)), url("https://piano.uottawa.ca/mwc/img/research.jpeg")',
+                        }}>
 
                             <Container className="py-lg-md d-flex">
                                 <div className="col px-0">
                                     <Row>
                                         <Col lg="6">
                                             <h1 className="display-3 text-white">
-                                                Education{" "}
+                                                Research{" "}
                                             </h1>
                                             <p className="lead text-white">
-                                                We offer a diverse set of educational programs taught by health
-                                                professionals and researchers, aimed to inform about physical, mental,
-                                                auditory, and visual wellness.
-
+                                                We conduct research on musicians’ wellness in conjunction with the Piano
+                                                Pedagogy Research Laboratory at the University of Ottawa. Our wellness
+                                                research program focuses on the impact that various treatments
+                                                (physiotherapy, somatic approaches, mindfulness training, yoga practice,
+                                                etc.) can have on musicians.
                                             </p>
                                             <div className="btn-wrapper">
                                                 <Button
                                                     className="btn-icon mb-3 mb-sm-0"
                                                     color="info"
-                                                    href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
+                                                    onClick={() => this.readMore("displayNone")}
                                                 >
                           <span className="btn-inner--icon mr-1">
                             <i className="fa fa-code"/>
                           </span>
-                                                    <span className="btn-inner--text">Explore</span>
+                                                    <span className="btn-inner--text">Read More</span>
                                                 </Button>
 
                                             </div>
+                                        </Col>
+                                        <Col lg="6" id="more-texts" className={this.state.displayNone}>
+                                            <p className="text-white p-3 overlay-transparent-layer border-radius-20">
+                                                More specifically, we want to investigate how these treatments can
+                                                increase musicians’ mental and physical comfort and possibly improve the
+                                                quality of their performance.
+                                                While there is a great deal of subjective evidence suggesting that these
+                                                practices are beneficial to musicians, there is a lack of objective data
+                                                confirming these reports.
+                                                In order to address this lack of research, the centre studies how these
+                                                treatments can increase musicians’ mental and physical comfort and
+                                                possibly improve the quality of their performance.
+                                                Also, music wellness research is faced with the troubling problem of
+                                                determining what is meant by “improvement” or “optimal” criteria.
+                                                Our research investigates whether musical (expression, musicality),
+                                                mechanical (low forces, stiffness, high speed) and biological (reduced
+                                                injury risk, low co-contraction) criteria are compatible, and whether it
+                                                is possible to approach music making in a way that simultaneously
+                                                achieves all three.</p>
                                         </Col>
                                     </Row>
                                 </div>
@@ -170,78 +199,72 @@ class AboutEducationTemplate extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                    </section>
+                    </section> */}
+
                     <section className="section bg-secondary">
                         <Container>
                             <Row className="row-grid align-items-center">
                                 <Col md="6">
-                                    <Card className="bg-default shadow border-0">
+                                    <Card className="bg-1c5e5e shadow border-0">
                                         <CardImg
                                             alt="..."
-                                            src={require("../assets/img/theme/img-1-1200x1000.jpg")}
+                                            src={"https://piano.uottawa.ca/mwc/img/research1.jpg"}
                                             top
                                         />
                                         <blockquote className="card-blockquote">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="svg-bg"
-                                                preserveAspectRatio="none"
-                                                viewBox="0 0 583 95"
-                                            >
-                                                <polygon
-                                                    className="fill-default"
-                                                    points="0,52 583,95 0,95"
-                                                />
-                                                <polygon
-                                                    className="fill-default"
-                                                    opacity=".2"
-                                                    points="0,42 583,95 683,0 0,95"
-                                                />
-                                            </svg>
-                                            <h4 className="display-3 font-weight-bold text-white">
-                                                Design System
+
+                                            <h4 className="display-4 font-weight-bold text-white pd-1">
+                                                Our research team includes professors, students, and health
+                                                professionals from the following disciplines:
                                             </h4>
-                                            <p className="lead text-italic text-white">
-                                                The Arctic Ocean freezes every winter and much of the
-                                                sea-ice then thaws every summer, and that process will
-                                                continue whatever happens.
+                                            <p className="text-italic text-white">
+                                                Music<br/>
+                                                Health Sciences<br/>
+                                                Psychology<br/>
+                                                Engineering<br/>
+                                                Human Kinetics<br/>
+                                                Audiology<br/>
+
                                             </p>
                                         </blockquote>
                                     </Card>
                                 </Col>
                                 <Col md="6">
                                     <div className="pl-md-5">
-                                        <div className="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
-                                            <i className="ni ni-settings" />
-                                        </div>
-                                        <h3>Our customers</h3>
-                                        <p className="lead">
-                                            Don't let your uses guess by attaching tooltips and
-                                            popoves to any element. Just make sure you enable them
-                                            first via JavaScript.
-                                        </p>
-                                        <p>
-                                            The kit comes with three pre-built pages to help you get
-                                            started faster. You can change the text and images and
-                                            you're good to go.
-                                        </p>
-                                        <p>
-                                            The kit comes with three pre-built pages to help you get
-                                            started faster. You can change the text and images and
-                                            you're good to go.
-                                        </p>
-                                        <a
-                                            className="font-weight-bold text-warning mt-5"
-                                            href="#pablo"
-                                            onClick={e => e.preventDefault()}
-                                        >
-                                            A beautiful UI Kit for impactful websites
-                                        </a>
+
+                                        <h1>Through our research, we aim to:</h1>
+                                        <ul>
+                                            <li>Develop relevant, interdisciplinary research focused on musicians’
+                                                wellness
+                                            </li>
+                                            <li>Expand theoretical and practical knowledge that can improve musicians’
+                                                wellbeing
+                                            </li>
+                                            <li>Evaluate the effect of various treatments and educational approaches
+                                            </li>
+                                            <li>Develop methodologies and tools for objectively measuring musicians’
+                                                bodies during performance
+                                            </li>
+                                            <li> Improve treatments and methods of prevention for musicians’ wellness
+                                            </li>
+                                            <li>Establish strong community partnerships that will bring service
+                                                providers into research
+                                            </li>
+                                            <li>Offer a rich environment for students by providing opportunities to
+                                                participate and gain valuable experience working on innovative research
+                                                projects
+                                            </li>
+                                        </ul>
+                                        <hr/>
+                                        For more information on wellness research: please visit the Piano Pedagogy
+                                        Research Laboratory
                                     </div>
                                 </Col>
                             </Row>
                         </Container>
                     </section>
+
+                    {/*
                     <section className="section pb-0 bg-gradient-warning">
                         <Container>
                             <Row className="row-grid align-items-center">
@@ -569,281 +592,85 @@ class AboutEducationTemplate extends React.Component {
                         <Container>
                             <Row className="text-center justify-content-center">
                                 <Col lg="10">
-                                    <h2 className="display-3 text-white">We offer programs related to the following
-                                        topics:</h2>
-                                    <p className="lead text-white">
-                                        Basic anatomical and physiological concepts applied to artists<br/>
-                                        Analysis and prevention of musicians' injuries<br/>
-                                        Strategies for minimizing effects of performance anxiety<br/>
-                                        Applying mindfulness to music performance<br/>
-                                        Auditory health and hearing loss prevention<br/>
-                                        Health problems faced by musicians<br/>
-                                        Available health approaches to improve musicians’ wellness<br/>
-                                        Development of healthy habits and practice strategies
-                                    </p>
+                                    <h2 className="display-3 text-white pb-4" id={"learn-more"}>Areas of Research:</h2>
                                 </Col>
                             </Row>
 
-                            <Row className="justify-content-center">
-                                <Col lg="12">
+                            <Row>
+                                <Col lg="4">
                                     <Row className="row-grid">
-                                        <Col md="6">
-                                            <Card className="card-lift--hover shadow border-0 m-3">
-
-                                                <CardImg src={"https://piano.uottawa.ca/mwc/img/education1.jpg"}/>
-                                                <CardImgOverlay>
-                                                    <CardBody className={"overlay-transparent-layer"}>
-                                                        <h4 className="text-white pt-1">
-                                                            MASTER'S PROGRAM
-                                                        </h4>
-                                                        <hr/>
-                                                        {/* Button trigger modal */}
-                                                        <Button
-                                                            color="warning"
-                                                            type="button"
-                                                            onClick={() => this.toggleModal("masterProgramModal")}
-                                                        >
-                                                            Learn More
-                                                        </Button>
-                                                        {/* Modal */}
-                                                        <Modal
-                                                            className="modal-dialog-centered"
-                                                            isOpen={this.state.masterProgramModal}
-                                                            toggle={() => this.toggleModal("masterProgramModal")}
-                                                        >
-                                                            <div className="modal-header">
-                                                                <h3 className="modal-title">
-                                                                    Master's Program
-                                                                </h3>
-                                                                <button
-                                                                    aria-label="Close"
-                                                                    className="close"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("masterProgramModal")}
-                                                                >
-                                                                    <span aria-hidden={true}>×</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                <strong>Master of Arts degree in Musicians' Wellness</strong>
-                                                                <hr/>
-                                                                The University of Ottawa is now offering an MA in Music degree with a profile in Musicians’ Wellness. Students in this program take various courses and workshops, and have the opportunity to participate in research projects related to musicians’ wellness.
-                                                                Click here for more information
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <Button
-                                                                    color="secondary"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("masterProgramModal")}
-                                                                >
-                                                                    Close
-                                                                </Button>
-                                                            </div>
-                                                        </Modal>
-                                                    </CardBody>
-                                                </CardImgOverlay>
-                                            </Card>
+                                        <Col md="12" className={"pb-3"}>
+                                            <CardBody className={"overlay-transparent-layer"}>
+                                                <h4 className="text-white pt-1">
+                                                    Performance Anxiety
+                                                </h4>
+                                                <hr/>
+                                                {/* Button trigger modal */}
+                                                <Button
+                                                    color="warning"
+                                                    type="button"
+                                                    onClick={() => this.toggleModal("masterProgramModal")}
+                                                    href="#learn-more"
+                                                >
+                                                    Learn More
+                                                </Button>
+                                            </CardBody>
                                         </Col>
-                                        <Col md="6">
-                                            <Card className="card-lift--hover shadow border-0 m-3">
-                                                <CardImg src={"https://piano.uottawa.ca/mwc/img/education3.png"}/>
-                                                <CardImgOverlay>
-                                                    <CardBody className={"overlay-transparent-layer"}>
-                                                        <h4 className="text-white pt-1">
-                                                            FOUR-CREDIT COURSES
-                                                        </h4>
-                                                        <hr/>
-                                                        <Button
-                                                            color="warning"
-                                                            type="button"
-                                                            onClick={() => this.toggleModal("fourCourseModal")}
-                                                        >
-                                                            Learn More
-                                                        </Button>
-                                                        {/* Modal */}
-                                                        <Modal
-                                                            className="modal-dialog-centered"
-                                                            isOpen={this.state.fourCourseModal}
-                                                            toggle={() => this.toggleModal("fourCourseModal")}
-                                                        >
-                                                            <div className="modal-header">
-                                                                <h3 className="modal-title">
-                                                                    For-credit Courses
-                                                                </h3>
-                                                                <button
-                                                                    aria-label="Close"
-                                                                    className="close"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("fourCourseModal")}
-                                                                >
-                                                                    <span aria-hidden={true}>×</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                Each semester, we offer university credits for workshops taught by our team of health professionals who have special experience in treating musicians. Each workshop normally lasts three or six hours and focuses on topics related to musicians’ wellness. Chiropractors, physiotherapists, psychologists, yoga instructors, Feldenkrais practitioners, and Alexander Technique teachers provide both practical and theoretical knowledge for musicians. While full-time university students can take these courses for credit, non-student members of the Ottawa community can also register for any of these workshops, either for credit or as auditors. Community members can register for individual workshops, or the full course. Some of these courses will be available to distance students.
-                                                                <br/>
-                                                                <br/>
-                                                                <strong>How to register</strong>
-                                                                <hr/>
-                                                                Full-time students from the University of Ottawa can register through uoZone. Because these units will accumulate towards a students’ degree program, fees are covered by university tuition. We also welcome community members who are not University of Ottawa students to register for any of these workshops, either for credit or as auditors. Community members who are not University of Ottawa students can register as auditors through the Professional Development Institute.
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <Button
-                                                                    color="secondary"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("fourCourseModal")}
-                                                                >
-                                                                    Close
-                                                                </Button>
-                                                            </div>
-                                                        </Modal>
-                                                    </CardBody>
-                                                </CardImgOverlay>
-                                            </Card>
+                                        <Col md="12" className={"pb-3"}>
+                                            <CardBody className={"overlay-transparent-layer"}>
+                                                <h4 className="text-white pt-1">
+                                                    Somatic Approaches and Clinical Treatments
+                                                </h4>
+                                                <hr/>
+                                                <Button
+                                                    color="warning"
+                                                    type="button"
+                                                    onClick={() => this.toggleModal("fourCourseModal")}
+                                                    href="#learn-more"
+                                                >
+                                                    Learn More
+                                                </Button>
+
+                                            </CardBody>
                                         </Col>
-                                        <br/>
-                                        <Col md="6">
-                                            <Card className="card-lift--hover shadow border-0 m-3">
-                                                <CardImg src={"https://piano.uottawa.ca/mwc/img/education3.png"}/>
-                                                <CardImgOverlay>
-                                                    <CardBody className="overlay-transparent-layer align-bottom">
-                                                        <h4 className="text-white pt-1">
-                                                            WORKSHOPS
-                                                        </h4>
-                                                        <hr/>
-                                                        <Button
-                                                            color="warning"
-                                                            type="button"
-                                                            onClick={() => this.toggleModal("workshopsModal")}
-                                                        >
-                                                            Learn More
-                                                        </Button>
-                                                        {/* Modal */}
-                                                        <Modal
-                                                            className="modal-dialog-centered"
-                                                            isOpen={this.state.workshopsModal}
-                                                            toggle={() => this.toggleModal("workshopsModal")}
-                                                        >
-                                                            <div className="modal-header">
-                                                                <h3 className="modal-title">
-                                                                    Workshops
-                                                                </h3>
-                                                                <button
-                                                                    aria-label="Close"
-                                                                    className="close"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("workshopsModal")}
-                                                                >
-                                                                    <span aria-hidden={true}>×</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                Each semester we offer several non-credited workshops at the University of Ottawa. Some are open to both university students and members of the community. Our workshops usually require prior registration to reserve a place.
-                                                                <br/>
-                                                                <br/>
-                                                                <strong>We offer classes in:</strong>
-                                                                <hr/>
-                                                                Mindfulness training<br/>
-                                                                Alexander Technique<br/>
-                                                                Feldenkrais Awareness through Movement<br/>
-                                                                Yoga<br/>
-                                                                Global Active Stretching<br/><br/>
 
-                                                                Please see the activities page for upcoming dates, workshop content, and registration information.
-
-
-
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <Button
-                                                                    color="secondary"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("workshopsModal")}
-                                                                >
-                                                                    Close
-                                                                </Button>
-                                                            </div>
-                                                        </Modal>
-                                                    </CardBody>
-                                                </CardImgOverlay>
-                                            </Card>
+                                        <Col md="12" className={"pb-3"}>
+                                            <CardBody className="overlay-transparent-layer align-bottom">
+                                                <h4 className="text-white pt-1">
+                                                    Biomechanics and Injury Prevention
+                                                </h4>
+                                                <hr/>
+                                                <Button
+                                                    color="warning"
+                                                    type="button"
+                                                    onClick={() => this.toggleModal("workshopsModal")}
+                                                    href="#learn-more"
+                                                >
+                                                    Learn More
+                                                </Button>
+                                            </CardBody>
                                         </Col>
-                                        <Col md="6"><Card className="card-lift--hover shadow border-0 m-3">
-                                            <CardImg src={"https://piano.uottawa.ca/mwc/img/education1.jpg"}/>
-                                            <CardImgOverlay>
-                                                <CardBody className={"overlay-transparent-layer"}>
-                                                    <h4 className="text-white pt-1">
-                                                        Masterclasses
-                                                    </h4>
-                                                    <hr/>
-                                                    <Button
-                                                        color="warning"
-                                                        type="button"
-                                                        onClick={() => this.toggleModal("masterclassModal")}
-                                                    >
-                                                        Learn More
-                                                    </Button>
-                                                    {/* Modal */}
-                                                    <Modal
-                                                        className="modal-dialog-centered"
-                                                        isOpen={this.state.masterclassModal}
-                                                        toggle={() => this.toggleModal("masterclassModal")}
-                                                    >
-                                                        <div className="modal-header">
-                                                            <h3 className="modal-title">
-                                                                For-credit Courses
-                                                            </h3>
-                                                            <button
-                                                                aria-label="Close"
-                                                                className="close"
-                                                                data-dismiss="modal"
-                                                                type="button"
-                                                                onClick={() => this.toggleModal("masterclassModal")}
-                                                            >
-                                                                <span aria-hidden={true}>×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div className="modal-body">
-                                                            Each semester we offer several non-credited workshops at the University of Ottawa. Some are open to both university students and members of the community. Our workshops usually require prior registration to reserve a place.
-                                                            <br/>
-                                                            <br/>
-                                                            <strong>We offer classes in:</strong>
-                                                            <hr/>
-                                                            Mindfulness training<br/>
-                                                            Alexander Technique<br/>
-                                                            Feldenkrais Awareness through Movement<br/>
-                                                            Yoga<br/>
-                                                            Global Active Stretching<br/><br/>
-
-                                                            Please see the activities page for upcoming dates, workshop content, and registration information.
-
-
-
-                                                        </div>
-                                                        <div className="modal-footer">
-                                                            <Button
-                                                                color="secondary"
-                                                                data-dismiss="modal"
-                                                                type="button"
-                                                                onClick={() => this.toggleModal("masterclassModal")}
-                                                            >
-                                                                Close
-                                                            </Button>
-                                                        </div>
-                                                    </Modal>
-
-                                                </CardBody>
-                                            </CardImgOverlay>
-                                        </Card>
+                                        <Col md="12" className={"pb-3"}>
+                                            <CardBody className={"overlay-transparent-layer"}>
+                                                <h4 className="text-white pt-1">
+                                                    Auditory and Visual Wellness
+                                                </h4>
+                                                <hr/>
+                                                <Button
+                                                    color="warning"
+                                                    type="button"
+                                                    onClick={() => this.toggleModal("masterclassModal")}
+                                                    href="#learn-more"
+                                                >
+                                                    Learn More
+                                                </Button>
+                                            </CardBody>
                                         </Col>
 
                                     </Row>
+                                </Col>
+                                <Col lg="8" className={"pl-5"} >
+                                    <h1>Dynamic contents to be placed here. </h1>
                                 </Col>
                             </Row>
                             {/*
@@ -967,7 +794,7 @@ class AboutEducationTemplate extends React.Component {
                     */}
 
                 </main>
-               {/*<CardsFooter/>*/}
+                {/*<CardsFooter/>*/}
             </Layout>
         );
     }

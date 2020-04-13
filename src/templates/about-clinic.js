@@ -56,19 +56,18 @@ class AboutEducationTemplate extends React.Component {
                 <main ref="main">
                     <div className="position-relative">
                         {/* shape Hero */}
-                        <section className="section section-shaped ext-large">
-
+                        <section className="section section-shaped ext-large" style={{
+                            backgroundImage: 'linear-gradient(rgba(114, 105, 80, 0.37), rgba(0, 0, 0, 0.5)), url("https://piano.uottawa.ca/mwc/img/clinic.jpeg")',
+                        }}>
                             <Container className="py-lg-md d-flex">
                                 <div className="col px-0">
                                     <Row>
-                                        <Col lg="6">
+                                        <Col lg="7">
                                             <h1 className="display-3 text-white">
-                                                Education{" "}
+                                                Clinic{" "}
                                             </h1>
-                                            <p className="lead text-white">
-                                                We offer a diverse set of educational programs taught by health
-                                                professionals and researchers, aimed to inform about physical, mental,
-                                                auditory, and visual wellness.
+                                            <p className="text-white">
+                                                Our clinic works closely with the community to provide a variety of options for professional care to address musicians’ wellness. The clinic is located in the School of Music at the University of Ottawa, where it functions as a small assessment and treatment facility. We also work in collaboration with a wide network of associated health professionals who have clinics in Ottawa. All professionals associated with the centre have knowledge of musicians’ concerns and problems and have extensive experience in treating musicians. See our services page for more information.
 
                                             </p>
                                             <div className="btn-wrapper">
@@ -569,17 +568,17 @@ class AboutEducationTemplate extends React.Component {
                         <Container>
                             <Row className="text-center justify-content-center">
                                 <Col lg="10">
-                                    <h2 className="display-3 text-white">We offer programs related to the following
-                                        topics:</h2>
+                                    <h2 className="display-3 text-white">Objectives</h2>
                                     <p className="lead text-white">
-                                        Basic anatomical and physiological concepts applied to artists<br/>
-                                        Analysis and prevention of musicians' injuries<br/>
-                                        Strategies for minimizing effects of performance anxiety<br/>
-                                        Applying mindfulness to music performance<br/>
-                                        Auditory health and hearing loss prevention<br/>
-                                        Health problems faced by musicians<br/>
-                                        Available health approaches to improve musicians’ wellness<br/>
-                                        Development of healthy habits and practice strategies
+                                        Promote an integrated model of care so that musicians can receive a variety of clinical treatments in a framework which is tailored to the specific demands of singing or playing an instrument by providing:
+                                        <br />
+                                        <br />
+                                        Assessments of physical pain and discomfort<br />
+                                        Musculoskeletal care to musicians<br />
+                                        Interventions to help cope with performance anxiety<br />
+                                        Hearing evaluations and guidance<br />
+                                        Assistance in developing healthy habits
+
                                     </p>
                                 </Col>
                             </Row>
@@ -888,6 +887,7 @@ class AboutEducationTemplate extends React.Component {
 
 
                     </section>
+
                     {/*
                     <section className="section section-lg pt-lg-0 section-contact-us">
                         <Container>

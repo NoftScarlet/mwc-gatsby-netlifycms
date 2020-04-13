@@ -16,9 +16,7 @@
 
 */
 import React from "react";
-import { Link } from "react-router-dom";
-// JavaScript plugin that hides or shows a component based on your scroll
-import Headroom from "headroom.js";
+// JavaScript plugin that hides or shows a component based on your scroll - import Headroom from "headroom.js";
 // reactstrap components
 import {
   Button,
@@ -41,9 +39,9 @@ import {
 
 class DemoNavbar extends React.Component {
   componentDidMount() {
-    let headroom = new Headroom(document.getElementById("navbar-main"));
+   // let headroom = new Headroom(document.getElementById("navbar-main"));
     // initialise
-    headroom.init();
+   // headroom.init();
   }
   render() {
     return (
@@ -55,10 +53,10 @@ class DemoNavbar extends React.Component {
             id="navbar-main"
           >
             <Container>
-              <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
+              <NavbarBrand className="mr-lg-5" to="/">
                 <img
                   alt="..."
-                  src={require("assets/img/brand/argon-react-white.png")}
+                  src={require("../../assets/img/brand/argon-react-white.png")}
                 />
               </NavbarBrand>
               <button className="navbar-toggler" id="navbar_global">
@@ -68,12 +66,10 @@ class DemoNavbar extends React.Component {
                 <div className="navbar-collapse-header">
                   <Row>
                     <Col className="collapse-brand" xs="6">
-                      <Link to="/">
                         <img
                           alt="..."
-                          src={require("assets/img/brand/argon-react.png")}
+                          src={require("../../assets/img/brand/argon-react.png")}
                         />
-                      </Link>
                     </Col>
                     <Col className="collapse-close" xs="6">
                       <button className="navbar-toggler" id="navbar_global">
@@ -154,16 +150,16 @@ class DemoNavbar extends React.Component {
                       <span className="nav-link-inner--text">Examples</span>
                     </DropdownToggle>
                     <DropdownMenu>
-                      <DropdownItem to="/landing-page" tag={Link}>
+                      <DropdownItem to="/landing-page" >
                         Landing
                       </DropdownItem>
-                      <DropdownItem to="/profile-page" tag={Link}>
+                      <DropdownItem to="/profile-page" >
                         Profile
                       </DropdownItem>
-                      <DropdownItem to="/login-page" tag={Link}>
+                      <DropdownItem to="/login-page" >
                         Login
                       </DropdownItem>
-                      <DropdownItem to="/register-page" tag={Link}>
+                      <DropdownItem to="/register-page" >
                         Register
                       </DropdownItem>
                     </DropdownMenu>

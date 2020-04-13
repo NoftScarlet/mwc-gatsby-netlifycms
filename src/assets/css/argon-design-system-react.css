@@ -4820,8 +4820,8 @@ button.bg-darker:focus {
 .border-danger {
   border-color: #f5365c !important; }
 
-.border-light {
-  border-color: #adb5bd !important; }
+/*.border-light {
+  border-color: #adb5bd !important; } commented by Chen Dec 02 2019*/
 
 .border-dark {
   border-color: #212529 !important; }
@@ -7596,8 +7596,8 @@ button.bg-gray-dark:hover,
 button.bg-gray-dark:focus {
   background-color: #20203c !important; }
 
-.bg-light {
-  background-color: #ced4da !important; }
+/*.bg-light {
+  background-color: #ced4da !important; } commented by Chen, Dec 12 2019*/
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,

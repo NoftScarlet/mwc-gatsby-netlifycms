@@ -1,7 +1,7 @@
 ---
 templateKey: product-page
 path: /d3d
-title: 'Our Coffeez '
+title: 'Our Coffeez'
 image: /img/jumbotron.jpg
 heading: Great coffee with a conscience
 description: >-

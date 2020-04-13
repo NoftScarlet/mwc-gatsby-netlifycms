@@ -18,7 +18,7 @@ const NavMenu = (props) => {
     return (
 
         <div className={"navbar-end"}>
-            <Navbar color="light" light expand="md">
+            <Navbar  light expand="md">
                 <ButtonGroup>
                     <Button outline color="secondary">Home</Button>{' '}
 

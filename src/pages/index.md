@@ -1,9 +1,8 @@
 ---
 templateKey: index-page
+path: /
 title: Musicians' Wellness Centre
 image: /img/home-jumbotron.jpg
-path: /
-
 heading: Our Mission 
 description: |
   The centre aims to educate, conduct research, and provide treatment related to musicians’ wellness. 

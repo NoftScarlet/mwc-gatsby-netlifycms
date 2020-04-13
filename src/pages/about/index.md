@@ -1,7 +1,7 @@
 ---
 templateKey: 'about-page'
-title: About our valuesyarn develop
-
+path: /about
+title: About our values
 ---
 
 [test link](/blog)

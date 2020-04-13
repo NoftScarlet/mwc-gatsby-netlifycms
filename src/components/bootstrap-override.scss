@@ -1,14 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
 
-
-
-@mixin button-outline-variant($color) {
-  border-color: $color;
-}
-
-.btn-outline-secondary {
-  @include button-outline-variant($light);
-}
 
 .btn-info {
   border-radius: 0;
@@ -46,4 +36,96 @@
 .grid-items .section{
   text-align:center;
   padding: 1rem 0.02rem
+}
+
+.ext-large{
+  opacity: 0.9;
+  height: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .display-3.text-white{
+    font-size: 4em;
+  }
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.card-img-overlay {
+  padding: 0.8rem;
+}
+
+.card-body {
+  padding: 1rem
+}
+
+.overlay-transparent-layer {
+  background-color: #000000a4
+}
+
+.bg-1c5e5e {
+  background-color: #1c5e5e;
+}
+
+.fill-1c5e5e {
+  fill: #1c5e5e;
+}
+
+.bg-fb6340 {
+  background-color: #fb6340;
+}
+
+.fill-fb6340 {
+  fill: #fb6340;
+}
+
+.bg-11cdef {
+  background-color: #11cdef
+}
+
+.fill-11cdef {
+  fill: #11cdef;
+}
+
+.bg-4a2f8d {
+  background-color: #4a2f8d;
+}
+
+.fill-4a2f8d {
+  fill: #4a2f8d;
+}
+
+ul {
+  list-style: disc;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.border-radius-20 {
+  border-radius: 20px;
+}
+
+.full-height {
+  height: 100%
+}
+
+.display-none {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
