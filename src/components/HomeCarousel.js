@@ -51,6 +51,21 @@ const HomeCarousel = (props) => {
         setActiveIndex(newIndex);
     }
 
+    const slidesStyle = {
+        backgroundClip: 'border-box',
+        backgroundColor: 'transparent',
+        backgroundOrigin: 'padding-box',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        height: 'auto !important',
+        margin: '0 auto',
+        minHeight: '300px',
+        width: 'auto',
+        paddingTop: '0',
+        position: 'relative',
+    }
+
     const slides = items.map((item) => {
         return (
             <CarouselItem
@@ -59,21 +74,7 @@ const HomeCarousel = (props) => {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <div className={"carousel-img-wrapper"} style={{
-                    backgroundImage:`url(${item.src})`,
-                    backgroundClip: 'border-box',
-                    backgroundColor: 'transparent',
-                    backgroundOrigin: 'padding-box',
-                    backgroundPosition: 'center center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    height: 'auto !important',
-                    margin: '0 auto',
-                    minHeight: '700px',
-                    width: '100%',
-                    paddingTop: '0',
-                    position: 'relative',
-                }}>
+                <div className={`carousel-img-wrapper ${slidesStyle}`} style={{backgroundImage:`url(${item.src})`}}>
                 </div>
 
 

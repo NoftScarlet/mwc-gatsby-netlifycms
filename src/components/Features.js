@@ -2,15 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import { Button } from 'reactstrap';
+import {
+    Container,
+    Row,
+    Col
+} from "reactstrap";
+
 
 
 const FeatureGrid = ({ gridItems }) => (
-  <div className="columns flex-wrap">
+  <Container className={"home-block"}>
+      <Row>
 
     {gridItems.map(item => (
+      <Col key={item.text} xs="12" sm="12" md="12" lg={"4"} xl={"4"} className="d-md-flex grid-items" >
 
-      <div key={item.text} className="column d-sm-flex grid-items">
-          <Button href={item.link} color="light">
+          <Button href={item.link} className="btn-primary">
         <section className="section">
 
           <div className="has-text-centered">
@@ -21,20 +28,18 @@ const FeatureGrid = ({ gridItems }) => (
               }}
             >
               <PreviewCompatibleImage imageInfo={item} />
-
             </div>
-              <p><br /></p>
-
+              <p><br/></p>
           </div>
 
           <p>{item.text}</p>
         </section>
       </Button>
-      </div>
+      </Col>
 
     ))}
-
-  </div>
+      </Row>
+  </Container>
 )
 
 FeatureGrid.propTypes = {

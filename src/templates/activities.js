@@ -6,19 +6,9 @@ import Layout from '../components/Layout'
 // reactstrap components
 import {
     Modal,
-    Badge,
-    Button,
-    Card,
     CardBody,
-    CardHeader,
-    CardTitle,
     CardImg,
     CardImgOverlay,
-    FormGroup,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
     Container,
     Row,
     Col
@@ -26,10 +16,369 @@ import {
 
 // core components
 import DemoNavbar from "../components/Navbars/DemoNavbar.jsx";
-import CardsFooter from "../components/Footers/CardsFooter.jsx";
 
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-class AboutEducationTemplate extends React.Component {
+const useStyles = makeStyles({
+    root: {
+        maxWidth: '100%',
+    },
+    media: {
+        height: 250,
+    },
+    description: {
+        textOverflow: 'ellipsis',
+        display: '-webkit-box',
+        '-webkit-line-clamp': 3,
+        '-webkit-box-orient': 'vertical',
+        overflow: 'hidden',
+
+    }
+});
+
+const useStylesPast = makeStyles({
+    root: {
+        maxWidth: '100%',
+    },
+    media: {
+        height: 140,
+    },
+    description: {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    }
+});
+
+const activityData = {
+    data: [
+        {
+            id:0,
+            is_current:false,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Musicians' Wellness Centre Information Session",
+            sub_title:"Launch of our Centre Activities",
+            instructors:"",
+            description:"Come and learn about this exciting new project!",
+            date_time:"Wednesday, September 18th 2019. 11:30am-12:30pm",
+            location:"Freiman Hall, School of Music, University of Ottawa",
+            attendee:"University students and members of the community",
+            language:"",
+            cost:"Free",
+            registration:"Not Required",
+            details:<div>
+                <ul>
+                    At our launch event, you will learn about the activities and services provided by the centre,
+                        including:
+                    <li>Upcoming events, such as workshops, courses, masterclasses</li>
+                    <li>The new MA degree program focused on Musicians' Wellness</li>
+                    <li>The Musicians' Wellness Centre clinic</li>
+                    <li>Wellness research and opportunities to get involved</li>
+                </ul>
+            </div>
+        },
+        {
+            id:1,
+            is_current:false,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Fall 2019 Workshops: Pain and Injury Prevention for Musicians",
+            sub_title:"(MUS4392A)",
+            instructors:"Dapne Mercado, Patricia Palmer, Dr. Geoff Outerbridge, Brigitte Caron, Jillian Beacon",
+            description:"Pain, discomfort, and injuries are common among musicians, and the need for specialized training and treatment is on the rise. These courses are taught by health professionals who have special experience in treating musicians. They will provide practical and theoretical knowledge to help musicians prevent and overcome pain. These workshops are designed to equip musicians with knowledge and tools to improve their physical well-being in relation to their instrument. They will introduce musicians to anatomy, mechanisms of injury, and strategies for prevention and treatment of injury through the Alexander Technique, chiropractic care, the Feldenkrais Method, and physiotherapy. The content of these workshops is applicable to a wide variety of musicians and instrumental groups.",
+            date_time:"",
+            location:"",
+            attendee:"All are welcome: uOttawa students and community members who are not uOttawa students.",
+            language:"English",
+            cost:"For full-time uOttawa students: Free upon course registration\n" +
+                "For part-time uOttawa students: $361.95 for all three workshops\n" +
+                "For community members who are not uOttawa students: Visit the Professional Development Institute page\n",
+            registration:"For uOttawa students: Register through uOzone for all three sessions to receive 1.5 units.\n" +
+                "For community members who are not uOttawa students: Register through the Professional Development Institute for individual sessions.",
+            details:
+            <div>
+                <div id={"workshop-1"}>
+                    Workshop 1
+                    The Musician’s Body and Repetitive Strain Injuries for Musicians
+
+                    Instructors: Part 1: Brigitte Caron, Certified Alexander Technique Teacher ~~ Part 2: Jillian Beacon, Certified Feldenkrais Practitioner
+
+                    Description:
+                    Part 1: Understanding Postural Reflex (Alexander Technique)
+
+                    Understanding the dynamics of the “postural reflex design”
+                    The benefits and "how to" of “Constructive Rest Position”
+                    Practical aspects of the Alexander Technique: Walking, standing, sitting, and using arms in relationship to oneself and an instrument.
+                    Part 2: Feldenkrais Method for Musicians
+                    Overview of the Feldenkrais Method and it’s relationship to research on pain and injury prevention
+                    Practical session in which participants will be instructed in using the Feldenkrais Method
+                    Date/Time: November 23, 2019: 9am-4pm
+
+                    Language of instruction: English
+
+                    Location: 50 University (PRZ), Room 109</div>
+                <div id={"workshop-2"}>
+                    Workshop 2
+                    Posture and Spine Pain
+                    Instructors: Part 1: Dapne Mercado, Physotherapist ~~ Part 2: Dr. Geoff Outerbridge, DC
+
+                    Description:
+                    Part 1: Posture
+
+                    Posture development, equilibrium and vital functions
+                    Changes in posture and loads applied to the body
+                    Healthy life-style for musicians
+                    Part 2: Spine Pain
+                    Spinal anatomy
+                    What causes pain? Mechanical and psychosocial factors
+                    Prevention
+                    Date/Time: November 2, 2019: 9am-4pm
+
+                    Language of instruction: English
+
+                    Location: 50 University (PRZ), Room 109</div>
+                <div id={"workshop-3"}>
+                    Workshop 3
+                    The Alexander Technique and Feldenkrais Method for Musicians
+                    Instructors: Part 1: Brigitte Caron, Certified Alexander Technique Teacher ~~ Part 2: Jillian Beacon, Certified Feldenkrais Practitioner
+
+                    Description:
+                    Part 1: Understanding Postural Reflex (Alexander Technique)
+
+                    Understanding the dynamics of the “postural reflex design”
+                    The benefits and "how to" of “Constructive Rest Position”
+                    Practical aspects of the Alexander Technique: Walking, standing, sitting, and using arms in relationship to oneself and an instrument.
+                    Part 2: Feldenkrais Method for Musicians
+                    Overview of the Feldenkrais Method and it’s relationship to research on pain and injury prevention
+                    Practical session in which participants will be instructed in using the Feldenkrais Method
+                    Date/Time: November 23, 2019: 9am-4pm
+
+                    Language of instruction: English
+
+                    Location: 50 University (PRZ), Room 109</div>
+
+            </div>
+        },
+        {
+            id:2,
+            is_current:false,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Group Mindfulness Series",
+            sub_title:"Fall 2019",
+            instructors:"Evelyn Tan",
+            description:"Our Fall Mindfulness Series will consist of six sessions, in which University of Ottawa music students can learn from our Certified Mindfulness Trainer. Each session will allow musicians to improve their wellness and learn new habits of awareness through mindfulness exercises. Recent research suggests that Mindfulness Training can help reduce music students’ experience of performance anxiety. These sessions can include walking meditation, body scanning, QiGong, and discussion periods to help participants process emotions and thoughts that arise during the practice.",
+            date_time:"Monday evenings from 6:00-7:00pm.Students will be asked to register for six weekly sessions, running from the week of October 21st until the week of November 25th.",
+            location:"Music School, 50 University (PRZ), Room 208",
+            attendee:"Open to Full-time University of Ottawa music students (not for university credit).",
+            language:"English",
+            cost:"Free",
+            registration:"“Try it out” Sessions:\n" +
+                "\n" +
+                "~~ Register here",
+            details:"To Learn more about Mindfulness Training: please visit our Services page."
+        },
+        {
+            id:3,
+            is_current:true,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Restorative Yoga for Musicians and Actors",
+            sub_title:"Winter 2020",
+            instructors:"Michael Fahey",
+            description:"We will offer a group of four workshops to help musicians and actors learn about healthy postural habits from our certified Yoga Instructor. Our instructor is a musician and actor with 35 years of experience training performing artists. Participants will learn about bringing awareness to pelvic alignment, core stability, flexibility, and muscle imbalances specific to the individual. The instructor will employ techniques from both yoga and QiGong and emphasize mindful breathing and body awareness. The poses and movements used in this course have been chosen for their restorative functions to promote gradual postural adjustment through increased awareness, rather than to promote fitness or strength training. The small class size will allow for individualized attention for each participant, with the goal of finding strategies for each musician and actor to deal with the postural challenges posed to them by their specific instrument. The movements and principles presented would also be of benefit to music teachers and drama teachers seeking to incorporate injury prevention strategies and ergonomic playing postures into their lessons with students of any level of experience.",
+            date_time:"",
+            location:"",
+            attendee:"All are welcome: uOttawa students and community members who are not uOttawa students",
+            language:"English",
+            cost:"For full-time uOttawa students: Free\n" +
+                "For part-time uOttawa students and community members who are not uOttawa students: Visit the Professional Development Institute page.",
+            registration:"",
+            details:"For uOttawa students: Register through uOzone for all four sessions to receive 1 unit.\n" +
+                "For community members who are not uOttawa students: Register through the Professional Development Institute for all four sessions."
+        },
+        {
+            id:4,
+            is_current:false,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Workshops in Global Active Stretching",
+            sub_title:"",
+            instructors:"",
+            description:"Global Active Stretching is a stretching method designed to restore elasticity and flexibility based on the elongation of all neuromuscular coordination chains. The stretching exercises in this class involve the whole body and require the musician's active participation. Sessions will help musicians improve their flexibility and learn stretches that they can continue to use in the future to help maintain musculoskeletal health. Please wear comfortable clothing and bring a yoga mat if you have one.\n",
+            date_time:"Every Tuesday between November 4-26 (four sessions total), 4:00pm-5:00pm",
+            location:"University of Ottawa School of Music, Room 208",
+            attendee:"All musicians (university students and community members)",
+            language:"English",
+            cost:"For all participants: $40 for all four sessions ($10 per session). To reserve a spot, payments must be made in cash at the Piano Lab (University of Ottawa School of Music, Room 204) by 3PM on November 4th.",
+            registration:"To register, send an email to mwc@uottawa.ca",
+            details:""
+        },
+        {
+            id:5,
+            is_current:true,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Musicians’ Wellness Research Study Day:",
+            sub_title:<h3><a href="./Study Day Schedule.pdf" target="_blank">Download Schedule</a></h3>,
+            instructors:"",
+            description:"We will be hosting a Research Study Day to help promote and disseminate new research on musicians’ wellness. The subject of musicians’ wellness has received increased attention from the research community over the past several decades. Research indicates that many musicians are impacted by a variety of wellness issues. Because these issues often present unique challenges, specialized care and understanding is necessary for effective treatment. Despite increased attention, more research is still needed to better understand the effect of treatments and prevention strategies. The study day will include presentations and discussions related to current research in the field of musicians’ wellness (schedule TBA). Members of the public are also welcome to attend.",
+            date_time:"Friday, March 20, 9am-5pm",
+            location:"School of Music, Creator’s Space, Room 302\n",
+            attendee:"Presenters have been chosen based on abstract submissions. All members of the public are welcome to attend presentations.\n",
+            language:"English",
+            cost:"Free",
+            registration:"",
+            details:""
+        },
+        {
+            id:6,
+            is_current:true,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Info Session: Auditory Health and Protection",
+            sub_title:"",
+            instructors:"",
+            description:"In conjunction with the University of Ottawa Graduate Music Student Association (GMSA), we will be offering an info session on auditory health and protection for University students. Hearing loss affects many musicians who need to maintain auditory health for their profession. Many musicians do not seek help for their hearing loss until after they are already experiencing symptoms of permanent auditory damage. At our info session, participants will learn about risk factors for hearing loss specific to musicians, the symptoms and signs of hearing loss, as well as recommendations for hearing protection to help maintain auditory health.",
+            date_time:"February 24, 11:30am-1pm",
+            location:"School of Music, Creator’s Space, Room 302",
+            attendee:"Free for anyone to attend",
+            language:"English/French",
+            cost:"",
+            registration:"",
+            details:""
+        },
+        {
+            id:7,
+            is_current:false,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"Wellness Day at the Gatineau Conservatoire",
+            sub_title:"",
+            instructors:"",
+            description:"The day-long event will allow students at the Conservatoire to take three different workshops: Yoga for Musicians (with Michael Fahey), Feldenkrais for Musicians (with Jillian Beacon), and Mental Performance Skills for Musicians (with Carolyn Christie). These sessions will be free for all Conservatoire students and will provide practical skills and techniques for improving physical and/or mental wellness specifically related to music making.",
+            date_time:"February 8th, 10am-5pm",
+            location:"Conservatoire de musique de Gatineau\n" +
+                "430 Alexandre-Taché Blvd\n" +
+                "Gatineau, Quebec J9A 1M7",
+            attendee:"",
+            language:"Feldenkrais/Mental Skills - French\n" +
+                "Yoga – English",
+            cost:"",
+            registration:"",
+            details:""
+        },
+        {
+            id:8,
+            is_current:false,
+            image:"https://piano.uottawa.ca/mwc/img/education1.jpg",
+            title:"The Alexander Technique for Vocalists: A Workshop with le Chœur classique de l’Outaouais",
+            sub_title:"",
+            instructors:"",
+            description:"Brigitte Caron will be giving a workshop on The Alexander Technique for vocalists. This workshop will be offered to members of le Chœur classique de l’Outaouais and will address aspects of posture and breathing specifically related to vocal performance.",
+            date_time:"January 25th, 10am-3pm",
+            location:"University of Ottawa School of Music, Room 109",
+            attendee:"",
+            language:"French",
+            cost:"",
+            registration:"",
+            details:""
+        }
+    ]
+}
+
+function ActivityCardsCurrent(props) {
+
+    const classes = useStyles();
+
+    return (
+        <>
+            {props.activitiesData.data.map(activity=> {
+                if (activity.is_current === true) return (
+                    <Col md={"6"}>
+                        <div key={activity.id}>
+                            <Card className={classes.root} >
+                                <CardActionArea>
+                                    <CardMedia
+                                        className={classes.media}
+                                        image={activity.image}
+                                        title={activity.title}
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {activity.title}
+                                        </Typography>
+                                        <hr />
+                                        <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
+                                            {activity.description}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                    <Button size="small" color="primary">
+                                        Share
+                                    </Button>
+                                    <Button size="small" color="primary">
+                                        Learn More
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </div>
+                    </Col>
+                )
+                    }
+            )}
+            </>
+    );
+}
+
+function ActivityCardsPast(props) {
+
+    const classes = useStylesPast();
+
+    return (
+        <>
+
+            {props.activitiesData.data.map(activity=>{
+                if (activity.is_current === false) return (
+                <Col lg="3" md={"4"} xs={"6"}>
+                <div key={activity.id}>
+                    <Card className={classes.root} >
+                        <CardActionArea>
+                            <CardMedia
+                                className={classes.media}
+                                image={activity.image}
+                                title={activity.title}
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h6" component="h6">
+                                    {activity.title}
+                                </Typography>
+                                <hr />
+                                <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
+                                    {activity.description}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                            <Button size="small" color="primary">
+                                Share
+                            </Button>
+                            <Button size="small" color="primary">
+                                Learn More
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </div>
+                </Col>
+                )}
+            )}
+
+        </>
+    );
+}
+
+class ActivitiesTemplate extends React.Component {
     state = {
         exampleModal: false,
         masterProgramModal: false,
@@ -56,34 +405,17 @@ class AboutEducationTemplate extends React.Component {
                 <main ref="main">
                     <div className="position-relative">
                         {/* shape Hero */}
-                        <section className="section section-shaped ext-large">
+                        <section style={{
+                            backgroundImage: 'linear-gradient(rgba(42, 68, 108, 0.33), rgba(0, 0, 0, 0.5)), url("https://piano.uottawa.ca/mwc/img/calendar.jpeg")',
+                        }} className="section section-shaped ext-large">
 
                             <Container className="py-lg-md d-flex">
                                 <div className="col px-0">
                                     <Row>
                                         <Col lg="6">
                                             <h1 className="display-3 text-white">
-                                                Education{" "}
+                                                Activities{" "}
                                             </h1>
-                                            <p className="lead text-white">
-                                                We offer a diverse set of educational programs taught by health
-                                                professionals and researchers, aimed to inform about physical, mental,
-                                                auditory, and visual wellness.
-
-                                            </p>
-                                            <div className="btn-wrapper">
-                                                <Button
-                                                    className="btn-icon mb-3 mb-sm-0"
-                                                    color="info"
-                                                    href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
-                                                >
-                          <span className="btn-inner--icon mr-1">
-                            <i className="fa fa-code"/>
-                          </span>
-                                                    <span className="btn-inner--text">Explore</span>
-                                                </Button>
-
-                                            </div>
                                         </Col>
                                     </Row>
                                 </div>
@@ -93,892 +425,34 @@ class AboutEducationTemplate extends React.Component {
                         </section>
                         {/* 1st Hero Variation */}
                     </div>
-                    {/*
-                    <section className="section section-lg">
-                        <Container>
-                            <Row className="row-grid align-items-center">
-                                <Col className="order-md-2" md="6">
-                                    <img
-                                        alt="..."
-                                        className="img-fluid floating"
-                                        src={require("../assets/img/theme/promo-1.png")}
-                                    />
-                                </Col>
-                                <Col className="order-md-1" md="6">
-                                    <div className="pr-md-5">
-                                        <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                                            <i className="ni ni-settings-gear-65" />
-                                        </div>
-                                        <h3>Awesome features</h3>
-                                        <p>
-                                            The kit comes with three pre-built pages to help you get
-                                            started faster. You can change the text and images and
-                                            you're good to go.
-                                        </p>
-                                        <ul className="list-unstyled mt-5">
-                                            <li className="py-2">
-                                                <div className="d-flex align-items-center">
-                                                    <div>
-                                                        <Badge
-                                                            className="badge-circle mr-3"
-                                                            color="success"
-                                                        >
-                                                            <i className="ni ni-settings-gear-65" />
-                                                        </Badge>
-                                                    </div>
-                                                    <div>
-                                                        <h6 className="mb-0">
-                                                            Carefully crafted components
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li className="py-2">
-                                                <div className="d-flex align-items-center">
-                                                    <div>
-                                                        <Badge
-                                                            className="badge-circle mr-3"
-                                                            color="success"
-                                                        >
-                                                            <i className="ni ni-html5" />
-                                                        </Badge>
-                                                    </div>
-                                                    <div>
-                                                        <h6 className="mb-0">Amazing page examples</h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li className="py-2">
-                                                <div className="d-flex align-items-center">
-                                                    <div>
-                                                        <Badge
-                                                            className="badge-circle mr-3"
-                                                            color="success"
-                                                        >
-                                                            <i className="ni ni-satisfied" />
-                                                        </Badge>
-                                                    </div>
-                                                    <div>
-                                                        <h6 className="mb-0">
-                                                            Super friendly support team
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section>
-                    <section className="section bg-secondary">
-                        <Container>
-                            <Row className="row-grid align-items-center">
-                                <Col md="6">
-                                    <Card className="bg-default shadow border-0">
-                                        <CardImg
-                                            alt="..."
-                                            src={require("../assets/img/theme/img-1-1200x1000.jpg")}
-                                            top
-                                        />
-                                        <blockquote className="card-blockquote">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="svg-bg"
-                                                preserveAspectRatio="none"
-                                                viewBox="0 0 583 95"
-                                            >
-                                                <polygon
-                                                    className="fill-default"
-                                                    points="0,52 583,95 0,95"
-                                                />
-                                                <polygon
-                                                    className="fill-default"
-                                                    opacity=".2"
-                                                    points="0,42 583,95 683,0 0,95"
-                                                />
-                                            </svg>
-                                            <h4 className="display-3 font-weight-bold text-white">
-                                                Design System
-                                            </h4>
-                                            <p className="lead text-italic text-white">
-                                                The Arctic Ocean freezes every winter and much of the
-                                                sea-ice then thaws every summer, and that process will
-                                                continue whatever happens.
-                                            </p>
-                                        </blockquote>
-                                    </Card>
-                                </Col>
-                                <Col md="6">
-                                    <div className="pl-md-5">
-                                        <div className="icon icon-lg icon-shape icon-shape-warning shadow rounded-circle mb-5">
-                                            <i className="ni ni-settings" />
-                                        </div>
-                                        <h3>Our customers</h3>
-                                        <p className="lead">
-                                            Don't let your uses guess by attaching tooltips and
-                                            popoves to any element. Just make sure you enable them
-                                            first via JavaScript.
-                                        </p>
-                                        <p>
-                                            The kit comes with three pre-built pages to help you get
-                                            started faster. You can change the text and images and
-                                            you're good to go.
-                                        </p>
-                                        <p>
-                                            The kit comes with three pre-built pages to help you get
-                                            started faster. You can change the text and images and
-                                            you're good to go.
-                                        </p>
-                                        <a
-                                            className="font-weight-bold text-warning mt-5"
-                                            href="#pablo"
-                                            onClick={e => e.preventDefault()}
-                                        >
-                                            A beautiful UI Kit for impactful websites
-                                        </a>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section>
-                    <section className="section pb-0 bg-gradient-warning">
-                        <Container>
-                            <Row className="row-grid align-items-center">
-                                <Col className="order-lg-2 ml-lg-auto" md="6">
-                                    <div className="position-relative pl-md-5">
-                                        <img
-                                            alt="..."
-                                            className="img-center img-fluid"
-                                            src={require("../assets/img/ill/ill-2.svg")}
-                                        />
-                                    </div>
-                                </Col>
-                                <Col className="order-lg-1" lg="6">
-                                    <div className="d-flex px-3">
-                                        <div>
-                                            <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                                <i className="ni ni-building text-primary" />
-                                            </div>
-                                        </div>
-                                        <div className="pl-4">
-                                            <h4 className="display-3 text-white">Modern Interface</h4>
-                                            <p className="text-white">
-                                                The Arctic Ocean freezes every winter and much of the
-                                                sea-ice then thaws every summer, and that process will
-                                                continue whatever.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <Card className="shadow shadow-lg--hover mt-5">
-                                        <CardBody>
-                                            <div className="d-flex px-3">
-                                                <div>
-                                                    <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
-                                                        <i className="ni ni-satisfied" />
-                                                    </div>
-                                                </div>
-                                                <div className="pl-4">
-                                                    <h5 className="title text-success">
-                                                        Awesome Support
-                                                    </h5>
-                                                    <p>
-                                                        The Arctic Ocean freezes every winter and much of
-                                                        the sea-ice then thaws every summer, and that
-                                                        process will continue whatever.
-                                                    </p>
-                                                    <a
-                                                        className="text-success"
-                                                        href="#pablo"
-                                                        onClick={e => e.preventDefault()}
-                                                    >
-                                                        Learn more
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                    <Card className="shadow shadow-lg--hover mt-5">
-                                        <CardBody>
-                                            <div className="d-flex px-3">
-                                                <div>
-                                                    <div className="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                                        <i className="ni ni-active-40" />
-                                                    </div>
-                                                </div>
-                                                <div className="pl-4">
-                                                    <h5 className="title text-warning">
-                                                        Modular Components
-                                                    </h5>
-                                                    <p>
-                                                        The Arctic Ocean freezes every winter and much of
-                                                        the sea-ice then thaws every summer, and that
-                                                        process will continue whatever.
-                                                    </p>
-                                                    <a
-                                                        className="text-warning"
-                                                        href="#pablo"
-                                                        onClick={e => e.preventDefault()}
-                                                    >
-                                                        Learn more
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Container>
 
-                        <div className="separator separator-bottom separator-skew zindex-100">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                preserveAspectRatio="none"
-                                version="1.1"
-                                viewBox="0 0 2560 100"
-                                x="0"
-                                y="0"
-                            >
-                                <polygon
-                                    className="fill-white"
-                                    points="2560 0 2560 100 0 100"
-                                />
-                            </svg>
-                        </div>
-                    </section>
-                    <section className="section section-lg">
+                    <section className="section section-lg bg-gradient-lighter">
                         <Container>
-                            <Row className="justify-content-center text-center mb-lg">
-                                <Col lg="8">
-                                    <h2 className="display-3">The amazing Team</h2>
-                                    <p className="lead text-muted">
-                                        According to the National Oceanic and Atmospheric
-                                        Administration, Ted, Scambos, NSIDClead scentist, puts the
-                                        potentially record maximum.
-                                    </p>
-                                </Col>
+                            <h2>Current (tab)</h2>
+                            <hr />
+                            <Row >
+                                <ActivityCardsCurrent activitiesData={activityData}/>
                             </Row>
+                            <h2>Ended (tab)</h2>
+                            <hr />
                             <Row>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-1-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">Ryan Tompson</span>
-                                                <small className="h6 text-muted">Web Developer</small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="warning"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="warning"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="warning"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-2-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">Romina Hadid</span>
-                                                <small className="h6 text-muted">
-                                                    Marketing Strategist
-                                                </small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="primary"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="primary"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="primary"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-3-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">Alexander Smith</span>
-                                                <small className="h6 text-muted">UI/UX Designer</small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="info"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="info"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="info"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-4-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">John Doe</span>
-                                                <small className="h6 text-muted">Founder and CEO</small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="success"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="success"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="success"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
+                                <ActivityCardsPast activitiesData={activityData}/>
                             </Row>
                         </Container>
                     </section>
-                    <section className="section section-lg pt-0">
-                        <Container>
-                            <Card className="bg-gradient-warning shadow-lg border-0">
-                                <div className="p-5">
-                                    <Row className="align-items-center">
-                                        <Col lg="8">
-                                            <h3 className="text-white">
-                                                We made website building easier for you.
-                                            </h3>
-                                            <p className="lead text-white mt-3">
-                                                I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture.
-                                            </p>
-                                        </Col>
-                                        <Col className="ml-lg-auto" lg="3">
-                                            <Button
-                                                block
-                                                className="btn-white"
-                                                color="default"
-                                                href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
-                                                size="lg"
-                                            >
-                                                Download React
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Card>
-                        </Container>
-                    </section>
-                    */}
-
-                    <section className="section section-lg bg-gradient-default">
-                        <Container>
-                            <Row className="text-center justify-content-center">
-                                <Col lg="10">
-                                    <h2 className="display-3 text-white">We offer programs related to the following
-                                        topics:</h2>
-                                    <p className="lead text-white">
-                                        Basic anatomical and physiological concepts applied to artists<br/>
-                                        Analysis and prevention of musicians' injuries<br/>
-                                        Strategies for minimizing effects of performance anxiety<br/>
-                                        Applying mindfulness to music performance<br/>
-                                        Auditory health and hearing loss prevention<br/>
-                                        Health problems faced by musicians<br/>
-                                        Available health approaches to improve musicians’ wellness<br/>
-                                        Development of healthy habits and practice strategies
-                                    </p>
-                                </Col>
-                            </Row>
-
-                            <Row className="justify-content-center">
-                                <Col lg="12">
-                                    <Row className="row-grid">
-                                        <Col md="6">
-                                            <Card className="card-lift--hover shadow border-0 m-3">
-
-                                                <CardImg src={"https://piano.uottawa.ca/mwc/img/education1.jpg"}/>
-                                                <CardImgOverlay>
-                                                    <CardBody className={"overlay-transparent-layer"}>
-                                                        <h4 className="text-white pt-1">
-                                                            MASTER'S PROGRAM
-                                                        </h4>
-                                                        <hr/>
-                                                        {/* Button trigger modal */}
-                                                        <Button
-                                                            color="warning"
-                                                            type="button"
-                                                            onClick={() => this.toggleModal("masterProgramModal")}
-                                                        >
-                                                            Learn More
-                                                        </Button>
-                                                        {/* Modal */}
-                                                        <Modal
-                                                            className="modal-dialog-centered"
-                                                            isOpen={this.state.masterProgramModal}
-                                                            toggle={() => this.toggleModal("masterProgramModal")}
-                                                        >
-                                                            <div className="modal-header">
-                                                                <h3 className="modal-title">
-                                                                    Master's Program
-                                                                </h3>
-                                                                <button
-                                                                    aria-label="Close"
-                                                                    className="close"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("masterProgramModal")}
-                                                                >
-                                                                    <span aria-hidden={true}>×</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                <strong>Master of Arts degree in Musicians' Wellness</strong>
-                                                                <hr/>
-                                                                The University of Ottawa is now offering an MA in Music degree with a profile in Musicians’ Wellness. Students in this program take various courses and workshops, and have the opportunity to participate in research projects related to musicians’ wellness.
-                                                                Click here for more information
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <Button
-                                                                    color="secondary"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("masterProgramModal")}
-                                                                >
-                                                                    Close
-                                                                </Button>
-                                                            </div>
-                                                        </Modal>
-                                                    </CardBody>
-                                                </CardImgOverlay>
-                                            </Card>
-                                        </Col>
-                                        <Col md="6">
-                                            <Card className="card-lift--hover shadow border-0 m-3">
-                                                <CardImg src={"https://piano.uottawa.ca/mwc/img/education3.png"}/>
-                                                <CardImgOverlay>
-                                                    <CardBody className={"overlay-transparent-layer"}>
-                                                        <h4 className="text-white pt-1">
-                                                            FOUR-CREDIT COURSES
-                                                        </h4>
-                                                        <hr/>
-                                                        <Button
-                                                            color="warning"
-                                                            type="button"
-                                                            onClick={() => this.toggleModal("fourCourseModal")}
-                                                        >
-                                                            Learn More
-                                                        </Button>
-                                                        {/* Modal */}
-                                                        <Modal
-                                                            className="modal-dialog-centered"
-                                                            isOpen={this.state.fourCourseModal}
-                                                            toggle={() => this.toggleModal("fourCourseModal")}
-                                                        >
-                                                            <div className="modal-header">
-                                                                <h3 className="modal-title">
-                                                                    For-credit Courses
-                                                                </h3>
-                                                                <button
-                                                                    aria-label="Close"
-                                                                    className="close"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("fourCourseModal")}
-                                                                >
-                                                                    <span aria-hidden={true}>×</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                Each semester, we offer university credits for workshops taught by our team of health professionals who have special experience in treating musicians. Each workshop normally lasts three or six hours and focuses on topics related to musicians’ wellness. Chiropractors, physiotherapists, psychologists, yoga instructors, Feldenkrais practitioners, and Alexander Technique teachers provide both practical and theoretical knowledge for musicians. While full-time university students can take these courses for credit, non-student members of the Ottawa community can also register for any of these workshops, either for credit or as auditors. Community members can register for individual workshops, or the full course. Some of these courses will be available to distance students.
-                                                                <br/>
-                                                                <br/>
-                                                                <strong>How to register</strong>
-                                                                <hr/>
-                                                                Full-time students from the University of Ottawa can register through uoZone. Because these units will accumulate towards a students’ degree program, fees are covered by university tuition. We also welcome community members who are not University of Ottawa students to register for any of these workshops, either for credit or as auditors. Community members who are not University of Ottawa students can register as auditors through the Professional Development Institute.
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <Button
-                                                                    color="secondary"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("fourCourseModal")}
-                                                                >
-                                                                    Close
-                                                                </Button>
-                                                            </div>
-                                                        </Modal>
-                                                    </CardBody>
-                                                </CardImgOverlay>
-                                            </Card>
-                                        </Col>
-                                        <br/>
-                                        <Col md="6">
-                                            <Card className="card-lift--hover shadow border-0 m-3">
-                                                <CardImg src={"https://piano.uottawa.ca/mwc/img/education3.png"}/>
-                                                <CardImgOverlay>
-                                                    <CardBody className="overlay-transparent-layer align-bottom">
-                                                        <h4 className="text-white pt-1">
-                                                            WORKSHOPS
-                                                        </h4>
-                                                        <hr/>
-                                                        <Button
-                                                            color="warning"
-                                                            type="button"
-                                                            onClick={() => this.toggleModal("workshopsModal")}
-                                                        >
-                                                            Learn More
-                                                        </Button>
-                                                        {/* Modal */}
-                                                        <Modal
-                                                            className="modal-dialog-centered"
-                                                            isOpen={this.state.workshopsModal}
-                                                            toggle={() => this.toggleModal("workshopsModal")}
-                                                        >
-                                                            <div className="modal-header">
-                                                                <h3 className="modal-title">
-                                                                    Workshops
-                                                                </h3>
-                                                                <button
-                                                                    aria-label="Close"
-                                                                    className="close"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("workshopsModal")}
-                                                                >
-                                                                    <span aria-hidden={true}>×</span>
-                                                                </button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                Each semester we offer several non-credited workshops at the University of Ottawa. Some are open to both university students and members of the community. Our workshops usually require prior registration to reserve a place.
-                                                                <br/>
-                                                                <br/>
-                                                                <strong>We offer classes in:</strong>
-                                                                <hr/>
-                                                                Mindfulness training<br/>
-                                                                Alexander Technique<br/>
-                                                                Feldenkrais Awareness through Movement<br/>
-                                                                Yoga<br/>
-                                                                Global Active Stretching<br/><br/>
-
-                                                                Please see the activities page for upcoming dates, workshop content, and registration information.
-
-
-
-                                                            </div>
-                                                            <div className="modal-footer">
-                                                                <Button
-                                                                    color="secondary"
-                                                                    data-dismiss="modal"
-                                                                    type="button"
-                                                                    onClick={() => this.toggleModal("workshopsModal")}
-                                                                >
-                                                                    Close
-                                                                </Button>
-                                                            </div>
-                                                        </Modal>
-                                                    </CardBody>
-                                                </CardImgOverlay>
-                                            </Card>
-                                        </Col>
-                                        <Col md="6"><Card className="card-lift--hover shadow border-0 m-3">
-                                            <CardImg src={"https://piano.uottawa.ca/mwc/img/education1.jpg"}/>
-                                            <CardImgOverlay>
-                                                <CardBody className={"overlay-transparent-layer"}>
-                                                    <h4 className="text-white pt-1">
-                                                        Masterclasses
-                                                    </h4>
-                                                    <hr/>
-                                                    <Button
-                                                        color="warning"
-                                                        type="button"
-                                                        onClick={() => this.toggleModal("masterclassModal")}
-                                                    >
-                                                        Learn More
-                                                    </Button>
-                                                    {/* Modal */}
-                                                    <Modal
-                                                        className="modal-dialog-centered"
-                                                        isOpen={this.state.masterclassModal}
-                                                        toggle={() => this.toggleModal("masterclassModal")}
-                                                    >
-                                                        <div className="modal-header">
-                                                            <h3 className="modal-title">
-                                                                For-credit Courses
-                                                            </h3>
-                                                            <button
-                                                                aria-label="Close"
-                                                                className="close"
-                                                                data-dismiss="modal"
-                                                                type="button"
-                                                                onClick={() => this.toggleModal("masterclassModal")}
-                                                            >
-                                                                <span aria-hidden={true}>×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div className="modal-body">
-                                                            Each semester we offer several non-credited workshops at the University of Ottawa. Some are open to both university students and members of the community. Our workshops usually require prior registration to reserve a place.
-                                                            <br/>
-                                                            <br/>
-                                                            <strong>We offer classes in:</strong>
-                                                            <hr/>
-                                                            Mindfulness training<br/>
-                                                            Alexander Technique<br/>
-                                                            Feldenkrais Awareness through Movement<br/>
-                                                            Yoga<br/>
-                                                            Global Active Stretching<br/><br/>
-
-                                                            Please see the activities page for upcoming dates, workshop content, and registration information.
-
-
-
-                                                        </div>
-                                                        <div className="modal-footer">
-                                                            <Button
-                                                                color="secondary"
-                                                                data-dismiss="modal"
-                                                                type="button"
-                                                                onClick={() => this.toggleModal("masterclassModal")}
-                                                            >
-                                                                Close
-                                                            </Button>
-                                                        </div>
-                                                    </Modal>
-
-                                                </CardBody>
-                                            </CardImgOverlay>
-                                        </Card>
-                                        </Col>
-
-                                    </Row>
-                                </Col>
-                            </Row>
-                            {/*
-
-                            <Row className="row-grid mt-5">
-                                <Col lg="4">
-                                    <div
-                                        className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                        <i className="ni ni-settings text-primary"/>
-                                    </div>
-                                    <h5 className="text-white mt-3">Building tools</h5>
-                                    <p className="text-white mt-3">
-                                        Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.
-                                    </p>
-                                </Col>
-                                <Col lg="4">
-                                    <div
-                                        className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                        <i className="ni ni-ruler-pencil text-primary"/>
-                                    </div>
-                                    <h5 className="text-white mt-3">Grow your market</h5>
-                                    <p className="text-white mt-3">
-                                        Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.
-                                    </p>
-                                </Col>
-                                <Col lg="4">
-                                    <div
-                                        className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                        <i className="ni ni-atom text-primary"/>
-                                    </div>
-                                    <h5 className="text-white mt-3">Launch time</h5>
-                                    <p className="text-white mt-3">
-                                        Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.
-                                    </p>
-                                </Col>
-                            </Row>
-                            */}
-                        </Container>
-
-
-                    </section>
-                    {/*
-                    <section className="section section-lg pt-lg-0 section-contact-us">
-                        <Container>
-                            <Row className="justify-content-center mt--300">
-                                <Col lg="8">
-                                    <Card className="bg-gradient-secondary shadow">
-                                        <CardBody className="p-lg-5">
-                                            <h4 className="mb-1">Want to work with us?</h4>
-                                            <p className="mt-0">
-                                                Your project is very important to us.
-                                            </p>
-                                            <FormGroup
-                                                className={classnames("mt-5", {
-                                                    focused: this.state.nameFocused
-                                                })}
-                                            >
-                                                <InputGroup className="input-group-alternative">
-                                                    <InputGroupAddon addonType="prepend">
-                                                        <InputGroupText>
-                                                            <i className="ni ni-user-run" />
-                                                        </InputGroupText>
-                                                    </InputGroupAddon>
-                                                    <Input
-                                                        placeholder="Your name"
-                                                        type="text"
-                                                        onFocus={e => this.setState({ nameFocused: true })}
-                                                        onBlur={e => this.setState({ nameFocused: false })}
-                                                    />
-                                                </InputGroup>
-                                            </FormGroup>
-                                            <FormGroup
-                                                className={classnames({
-                                                    focused: this.state.emailFocused
-                                                })}
-                                            >
-                                                <InputGroup className="input-group-alternative">
-                                                    <InputGroupAddon addonType="prepend">
-                                                        <InputGroupText>
-                                                            <i className="ni ni-email-83" />
-                                                        </InputGroupText>
-                                                    </InputGroupAddon>
-                                                    <Input
-                                                        placeholder="Email address"
-                                                        type="email"
-                                                        onFocus={e => this.setState({ emailFocused: true })}
-                                                        onBlur={e => this.setState({ emailFocused: false })}
-                                                    />
-                                                </InputGroup>
-                                            </FormGroup>
-                                            <FormGroup className="mb-4">
-                                                <Input
-                                                    className="form-control-alternative"
-                                                    cols="80"
-                                                    name="name"
-                                                    placeholder="Type a message..."
-                                                    rows="4"
-                                                    type="textarea"
-                                                />
-                                            </FormGroup>
-                                            <div>
-                                                <Button
-                                                    block
-                                                    className="btn-round"
-                                                    color="default"
-                                                    size="lg"
-                                                    type="button"
-                                                >
-                                                    Send Message
-                                                </Button>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section>
-                    */}
-
                 </main>
-               {/*<CardsFooter/>*/}
+
             </Layout>
         );
     }
 }
 
-const AboutEducation = ({data}) => {
+const Activities = ({data}) => {
     return (
 
-        <AboutEducationTemplate/>
+        <ActivitiesTemplate/>
 
     )
 }
 
-export default AboutEducation
+export default Activities

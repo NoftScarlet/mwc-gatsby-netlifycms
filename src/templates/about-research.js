@@ -5,38 +5,207 @@ import {graphql} from 'gatsby'
 import Layout from '../components/Layout'
 // reactstrap components
 import {
-    Modal,
-    Badge,
     Button,
     Card,
     CardBody,
-    CardHeader,
-    CardTitle,
     CardImg,
-    CardImgOverlay,
-    FormGroup,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
     Container,
     Row,
     Col
 } from "reactstrap";
-
-// core components
 import DemoNavbar from "../components/Navbars/DemoNavbar.jsx";
-import CardsFooter from "../components/Footers/CardsFooter.jsx";
+import PropTypes from 'prop-types';
+import {makeStyles} from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import ReadMoreResearch from '../components/ResearchReadMore'
+
+function TabPanel(props) {
+    const {children, value, index, ...other} = props;
+
+    return (
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && <Box p={3}>{children}</Box>}
+        </Typography>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `vertical-tab-${index}`,
+        'aria-controls': `vertical-tabpanel-${index}`,
+    };
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 2,
+        display: 'flex',
+
+    },
+    tabs: {
+        borderRight: `1px solid ${theme.palette.divider}`,
+    },
+    tabButton: {
+        width:'97%',
+        maxWidth: '97%'
+    },
+    image: {
+        float:'right',
+        width:'55%'
+    },
+    imageL: {
+        float:'left',
+        width:'55%',
+        marginRight: '4px'
+    }
+}));
+
+function VerticalTabs() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    return (
+        <div className={classes.root}>
+
+            <Row>
+                <Col md="4">
+                    <Tabs
+                        orientation="vertical"
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="Vertical tabs example"
+                        className={classes.tabs}
+                    >
+                        <Tab label={
+                            <CardBody className={`overlay-transparent-layer ${classes.tabButton}`}><h5
+                                className="text-white pt-1">Performance Anxiety</h5>
+                                <hr/>
+                            </CardBody>
+                        } {...a11yProps(0)} className={classes.tabButton}/>
+
+                        <Tab label={
+                            <CardBody className={`overlay-transparent-layer ${classes.tabButton}`}><h5
+                                className="text-white pt-1">Somatic Approaches and Clinical Treatments</h5>
+                                <hr/>
+                            </CardBody>
+                        } {...a11yProps(1)} className={classes.tabButton}/>
+
+                        <Tab label={
+                            <CardBody className={`overlay-transparent-layer ${classes.tabButton}`}><h5
+                                className="text-white pt-1">Biomechanics and Injury Prevention</h5>
+                                <hr/>
+                            </CardBody>
+                        } {...a11yProps(2)} className={classes.tabButton}/>
+
+                        <Tab label={
+                            <CardBody className={`overlay-transparent-layer ${classes.tabButton}`}><h5
+                                className="text-white pt-1">Auditory and Visual Wellness</h5>
+                                <hr/>
+                            </CardBody>
+                        } {...a11yProps(3)} className={classes.tabButton}/>
+
+                    </Tabs>
+                </Col>
+                <Col md="8">
+                    <TabPanel value={value} index={0}>
+                        <img className={classes.image} src={"https://piano.uottawa.ca/mwc/img/mindfulness.jpeg"}/>
+                        <p className={" text-white"}>Many research studies have documented the prevalence of Musicians’ Performance Anxiety (MPA).
+                            The symptoms of MPA include both mental and physical elements, and can have a severe impact on
+                            musicians’ well-being and ability to perform at a high level. Due to the seriousness of this
+                            problem, many music teachers and students are voicing the need for better strategies to cope
+                            with MPA. In order to fill this need, more research is required to better understand MPA, as
+                            well as the strategies that can help struggling musicians. Our research focuses on examining the
+                            effectiveness of strategies such as self-modelling and mindfulness. A better understanding of
+                            how strategies can impact musicians’ psychological experience of MPA as well as its physical
+                            symptoms can help performers, educators, and practitioners better deal with these challenges in
+                            their work.</p>
+
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        <img className={classes.imageL} src={"https://piano.uottawa.ca/mwc/img/somatic.JPG"} />
+                        <p className={" text-white"}>
+                        Somatic retraining methods such as Alexander Technique, Feldenkrais Method, and Body Mapping are
+                        becoming increasingly popular among musicians. Although much of the theoretical foundations of
+                        these methods are based on scientific understanding of anatomy, motor control, neuroplasticity,
+                        and motor-learning, our understanding of any positive benefits of somatic training is almost
+                        entirely theoretical or anecdotal. Because the current amount of scientific research on the
+                        impacts of somatic training is very small, further investigation is needed. Our research on
+                        somatic methods aims at examining the effects of somatic training on posture and movement of
+                        musicians performing on their instrument and the musical quality of a performance. It also
+                        examines how individual somatic approaches differ in their impact on musicians, and whether or
+                        not those impacts occur over short term and long term interventions. This research could give an
+                        empirical basis upon which to understand the usefulness of somatic treatments in helping
+                        musicians. In addition to our work on somatic methods, we have also established a partnership
+                        with Dr. Outerbridge’s clinic to monitor the progress of various clinical treatments on injured
+                        musicians.</p>
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        <img className={classes.image} src={"https://piano.uottawa.ca/mwc/img/motion.jpg"} />
+                        <p className={" text-white"}>
+                        Playing a musical instrument is a highly complex biomechanical task. While there are many
+                        approaches aiming to promote efficiency and injury prevention, pedagogues often disagree on the
+                        specifics of what is “healthy technique.” These disagreements are often based on imprecise
+                        terminology and subjective results, creating a great deal of confusion for musicians who are
+                        seeking answers to their technical and physical wellness needs. Therefore, objective data is
+                        required to better understand the biomechanics of musical performance and injury prevention. Our
+                        research uses quantitative tools to learn more about muscle use, the positions required for
+                        playing musical instruments, as well as the impact of injury prevention and treatment
+                        strategies. We also use qualitative research in order to examine popular pedagogical approaches
+                        and prevention strategies in relation to scientific findings. This research can help improve
+                        musicians’ wellness by furthering our understanding of instrumental technique, pedagogy, and
+                        injury prevention strategies so that musicians can apply this knowledge to their own playing.</p>
+                    </TabPanel>
+                    <TabPanel value={value} index={3}>
+                        <img className={classes.imageL} src={"https://piano.uottawa.ca/mwc/img/hearing.JPG"} />
+                        <p className={" text-white"}>
+                        Most professional musicians depend on maintaining good auditory health to be successful in their
+                        occupation. Hearing loss can threaten a musician’s ability to perform well, and a number of
+                        studies have concluded that musicians are at risk for hearing loss due to the potentially
+                        harmful levels of sound exposure in their working environment. Research indicates that musicians
+                        might not be sufficiently aware of their hearing health until they experience symptoms, and
+                        therefore they are not likely to get hearing protection until damage has already occurred. Our
+                        research on auditory wellness aims to better understand the risk of hearing loss caused by music
+                        making, as well test diagnostic methods that may be able to detect problems earlier and point
+                        musicians towards proper treatment and preventative care.
+                        Visual problems can also impact musicians’ ability to perform well. While issues with visual
+                        focus can make it difficult for musicians to read in different performance contexts (on stage,
+                        in halls with poor lighting, etc.), beginner musicians may also struggle to learn to read (a
+                        condition called “dysmusia”) due to visual difficulties. It is possible that one cause of
+                        dysmusia could be a problem of coordination between the two eyes (known as “binocular
+                        coordination”). Our research on visual wellness investigates if there is an observable
+                        relationship between issues with binocular coordination and dysmusia that may have an impact on
+                        musicians who are learning to read.</p>
+                    </TabPanel>
+                </Col>
+            </Row>
+        </div>
+    );
+}
 
 
-class AboutEducationTemplate extends React.Component {
+class AboutResearchTemplate extends React.Component {
     state = {
-        exampleModal: false,
-        masterProgramModal: false,
-        fourCourseModal: false,
-        workshopsModal: false,
-        masterclassModal: false,
-        displayNone: "display-none",
+        opacityZero: "opacity-zero",
     };
     toggleModal = state => {
         this.setState({
@@ -46,7 +215,7 @@ class AboutEducationTemplate extends React.Component {
 
     readMore = state => {
         this.setState({
-            [state]: ""
+            [state]: "opacity-one"
         })
     }
 
@@ -56,6 +225,9 @@ class AboutEducationTemplate extends React.Component {
     }
 
     render() {
+        const areasOfResearchStyle = {
+            minHeight : "912px"
+        }
 
         return (
             <Layout>
@@ -83,9 +255,9 @@ class AboutEducationTemplate extends React.Component {
                                             </p>
                                             <div className="btn-wrapper">
                                                 <Button
-                                                    className="btn-icon mb-3 mb-sm-0"
+                                                    className="btn-icon mb-3 mb-sm-0 pb-3"
                                                     color="info"
-                                                    onClick={() => this.readMore("displayNone")}
+                                                    onClick={() => this.readMore("opacityZero")}
                                                 >
                           <span className="btn-inner--icon mr-1">
                             <i className="fa fa-code"/>
@@ -95,8 +267,8 @@ class AboutEducationTemplate extends React.Component {
 
                                             </div>
                                         </Col>
-                                        <Col lg="6" id="more-texts" className={this.state.displayNone}>
-                                            <p className="text-white p-3 overlay-transparent-layer border-radius-20">
+                                        <Col lg="6" id="more-texts" className={`${this.state.opacityZero} fade_in_out read_more_background`}>
+                                            <p className="text-white pt-3 border-radius-3 ">
                                                 More specifically, we want to investigate how these treatments can
                                                 increase musicians’ mental and physical comfort and possibly improve the
                                                 quality of their performance.
@@ -122,90 +294,13 @@ class AboutEducationTemplate extends React.Component {
                         </section>
                         {/* 1st Hero Variation */}
                     </div>
-                    {/*
-                    <section className="section section-lg">
-                        <Container>
-                            <Row className="row-grid align-items-center">
-                                <Col className="order-md-2" md="6">
-                                    <img
-                                        alt="..."
-                                        className="img-fluid floating"
-                                        src={require("../assets/img/theme/promo-1.png")}
-                                    />
-                                </Col>
-                                <Col className="order-md-1" md="6">
-                                    <div className="pr-md-5">
-                                        <div className="icon icon-lg icon-shape icon-shape-success shadow rounded-circle mb-5">
-                                            <i className="ni ni-settings-gear-65" />
-                                        </div>
-                                        <h3>Awesome features</h3>
-                                        <p>
-                                            The kit comes with three pre-built pages to help you get
-                                            started faster. You can change the text and images and
-                                            you're good to go.
-                                        </p>
-                                        <ul className="list-unstyled mt-5">
-                                            <li className="py-2">
-                                                <div className="d-flex align-items-center">
-                                                    <div>
-                                                        <Badge
-                                                            className="badge-circle mr-3"
-                                                            color="success"
-                                                        >
-                                                            <i className="ni ni-settings-gear-65" />
-                                                        </Badge>
-                                                    </div>
-                                                    <div>
-                                                        <h6 className="mb-0">
-                                                            Carefully crafted components
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li className="py-2">
-                                                <div className="d-flex align-items-center">
-                                                    <div>
-                                                        <Badge
-                                                            className="badge-circle mr-3"
-                                                            color="success"
-                                                        >
-                                                            <i className="ni ni-html5" />
-                                                        </Badge>
-                                                    </div>
-                                                    <div>
-                                                        <h6 className="mb-0">Amazing page examples</h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li className="py-2">
-                                                <div className="d-flex align-items-center">
-                                                    <div>
-                                                        <Badge
-                                                            className="badge-circle mr-3"
-                                                            color="success"
-                                                        >
-                                                            <i className="ni ni-satisfied" />
-                                                        </Badge>
-                                                    </div>
-                                                    <div>
-                                                        <h6 className="mb-0">
-                                                            Super friendly support team
-                                                        </h6>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section> */}
+
 
                     <section className="section bg-secondary">
                         <Container>
                             <Row className="row-grid align-items-center">
                                 <Col md="6">
-                                    <Card className="bg-1c5e5e shadow border-0">
+                                    <Card className="bg-238686 shadow border-0">
                                         <CardImg
                                             alt="..."
                                             src={"https://piano.uottawa.ca/mwc/img/research1.jpg"}
@@ -264,548 +359,26 @@ class AboutEducationTemplate extends React.Component {
                         </Container>
                     </section>
 
-                    {/*
-                    <section className="section pb-0 bg-gradient-warning">
-                        <Container>
-                            <Row className="row-grid align-items-center">
-                                <Col className="order-lg-2 ml-lg-auto" md="6">
-                                    <div className="position-relative pl-md-5">
-                                        <img
-                                            alt="..."
-                                            className="img-center img-fluid"
-                                            src={require("../assets/img/ill/ill-2.svg")}
-                                        />
-                                    </div>
-                                </Col>
-                                <Col className="order-lg-1" lg="6">
-                                    <div className="d-flex px-3">
-                                        <div>
-                                            <div className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                                <i className="ni ni-building text-primary" />
-                                            </div>
-                                        </div>
-                                        <div className="pl-4">
-                                            <h4 className="display-3 text-white">Modern Interface</h4>
-                                            <p className="text-white">
-                                                The Arctic Ocean freezes every winter and much of the
-                                                sea-ice then thaws every summer, and that process will
-                                                continue whatever.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <Card className="shadow shadow-lg--hover mt-5">
-                                        <CardBody>
-                                            <div className="d-flex px-3">
-                                                <div>
-                                                    <div className="icon icon-shape bg-gradient-success rounded-circle text-white">
-                                                        <i className="ni ni-satisfied" />
-                                                    </div>
-                                                </div>
-                                                <div className="pl-4">
-                                                    <h5 className="title text-success">
-                                                        Awesome Support
-                                                    </h5>
-                                                    <p>
-                                                        The Arctic Ocean freezes every winter and much of
-                                                        the sea-ice then thaws every summer, and that
-                                                        process will continue whatever.
-                                                    </p>
-                                                    <a
-                                                        className="text-success"
-                                                        href="#pablo"
-                                                        onClick={e => e.preventDefault()}
-                                                    >
-                                                        Learn more
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                    <Card className="shadow shadow-lg--hover mt-5">
-                                        <CardBody>
-                                            <div className="d-flex px-3">
-                                                <div>
-                                                    <div className="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                                                        <i className="ni ni-active-40" />
-                                                    </div>
-                                                </div>
-                                                <div className="pl-4">
-                                                    <h5 className="title text-warning">
-                                                        Modular Components
-                                                    </h5>
-                                                    <p>
-                                                        The Arctic Ocean freezes every winter and much of
-                                                        the sea-ice then thaws every summer, and that
-                                                        process will continue whatever.
-                                                    </p>
-                                                    <a
-                                                        className="text-warning"
-                                                        href="#pablo"
-                                                        onClick={e => e.preventDefault()}
-                                                    >
-                                                        Learn more
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Container>
-
-                        <div className="separator separator-bottom separator-skew zindex-100">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                preserveAspectRatio="none"
-                                version="1.1"
-                                viewBox="0 0 2560 100"
-                                x="0"
-                                y="0"
-                            >
-                                <polygon
-                                    className="fill-white"
-                                    points="2560 0 2560 100 0 100"
-                                />
-                            </svg>
-                        </div>
-                    </section>
-                    <section className="section section-lg">
-                        <Container>
-                            <Row className="justify-content-center text-center mb-lg">
-                                <Col lg="8">
-                                    <h2 className="display-3">The amazing Team</h2>
-                                    <p className="lead text-muted">
-                                        According to the National Oceanic and Atmospheric
-                                        Administration, Ted, Scambos, NSIDClead scentist, puts the
-                                        potentially record maximum.
-                                    </p>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-1-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">Ryan Tompson</span>
-                                                <small className="h6 text-muted">Web Developer</small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="warning"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="warning"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="warning"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-2-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">Romina Hadid</span>
-                                                <small className="h6 text-muted">
-                                                    Marketing Strategist
-                                                </small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="primary"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="primary"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="primary"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-3-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">Alexander Smith</span>
-                                                <small className="h6 text-muted">UI/UX Designer</small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="info"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="info"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="info"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col className="mb-5 mb-lg-0" lg="3" md="6">
-                                    <div className="px-4">
-                                        <img
-                                            alt="..."
-                                            className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                                            src={require("../assets/img/theme/team-4-800x800.jpg")}
-                                            style={{ width: "200px" }}
-                                        />
-                                        <div className="pt-4 text-center">
-                                            <h5 className="title">
-                                                <span className="d-block mb-1">John Doe</span>
-                                                <small className="h6 text-muted">Founder and CEO</small>
-                                            </h5>
-                                            <div className="mt-3">
-                                                <Button
-                                                    className="btn-icon-only rounded-circle"
-                                                    color="success"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-twitter" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="success"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-facebook" />
-                                                </Button>
-                                                <Button
-                                                    className="btn-icon-only rounded-circle ml-1"
-                                                    color="success"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <i className="fa fa-dribbble" />
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section>
-                    <section className="section section-lg pt-0">
-                        <Container>
-                            <Card className="bg-gradient-warning shadow-lg border-0">
-                                <div className="p-5">
-                                    <Row className="align-items-center">
-                                        <Col lg="8">
-                                            <h3 className="text-white">
-                                                We made website building easier for you.
-                                            </h3>
-                                            <p className="lead text-white mt-3">
-                                                I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture.
-                                            </p>
-                                        </Col>
-                                        <Col className="ml-lg-auto" lg="3">
-                                            <Button
-                                                block
-                                                className="btn-white"
-                                                color="default"
-                                                href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
-                                                size="lg"
-                                            >
-                                                Download React
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Card>
-                        </Container>
-                    </section>
-                    */}
-
-                    <section className="section section-lg bg-gradient-default">
+                    <section className="section section-lg bg-gradient-default" style={areasOfResearchStyle}>
                         <Container>
                             <Row className="text-center justify-content-center">
                                 <Col lg="10">
-                                    <h2 className="display-3 text-white pb-4" id={"learn-more"}>Areas of Research:</h2>
+                                    <h1 className="display-3 text-white pb-4" id={"learn-more"}>Areas of Research:</h1>
                                 </Col>
                             </Row>
-
-                            <Row>
-                                <Col lg="4">
-                                    <Row className="row-grid">
-                                        <Col md="12" className={"pb-3"}>
-                                            <CardBody className={"overlay-transparent-layer"}>
-                                                <h4 className="text-white pt-1">
-                                                    Performance Anxiety
-                                                </h4>
-                                                <hr/>
-                                                {/* Button trigger modal */}
-                                                <Button
-                                                    color="warning"
-                                                    type="button"
-                                                    onClick={() => this.toggleModal("masterProgramModal")}
-                                                    href="#learn-more"
-                                                >
-                                                    Learn More
-                                                </Button>
-                                            </CardBody>
-                                        </Col>
-                                        <Col md="12" className={"pb-3"}>
-                                            <CardBody className={"overlay-transparent-layer"}>
-                                                <h4 className="text-white pt-1">
-                                                    Somatic Approaches and Clinical Treatments
-                                                </h4>
-                                                <hr/>
-                                                <Button
-                                                    color="warning"
-                                                    type="button"
-                                                    onClick={() => this.toggleModal("fourCourseModal")}
-                                                    href="#learn-more"
-                                                >
-                                                    Learn More
-                                                </Button>
-
-                                            </CardBody>
-                                        </Col>
-
-                                        <Col md="12" className={"pb-3"}>
-                                            <CardBody className="overlay-transparent-layer align-bottom">
-                                                <h4 className="text-white pt-1">
-                                                    Biomechanics and Injury Prevention
-                                                </h4>
-                                                <hr/>
-                                                <Button
-                                                    color="warning"
-                                                    type="button"
-                                                    onClick={() => this.toggleModal("workshopsModal")}
-                                                    href="#learn-more"
-                                                >
-                                                    Learn More
-                                                </Button>
-                                            </CardBody>
-                                        </Col>
-                                        <Col md="12" className={"pb-3"}>
-                                            <CardBody className={"overlay-transparent-layer"}>
-                                                <h4 className="text-white pt-1">
-                                                    Auditory and Visual Wellness
-                                                </h4>
-                                                <hr/>
-                                                <Button
-                                                    color="warning"
-                                                    type="button"
-                                                    onClick={() => this.toggleModal("masterclassModal")}
-                                                    href="#learn-more"
-                                                >
-                                                    Learn More
-                                                </Button>
-                                            </CardBody>
-                                        </Col>
-
-                                    </Row>
-                                </Col>
-                                <Col lg="8" className={"pl-5"} >
-                                    <h1>Dynamic contents to be placed here. </h1>
-                                </Col>
-                            </Row>
-                            {/*
-
-                            <Row className="row-grid mt-5">
-                                <Col lg="4">
-                                    <div
-                                        className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                        <i className="ni ni-settings text-primary"/>
-                                    </div>
-                                    <h5 className="text-white mt-3">Building tools</h5>
-                                    <p className="text-white mt-3">
-                                        Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.
-                                    </p>
-                                </Col>
-                                <Col lg="4">
-                                    <div
-                                        className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                        <i className="ni ni-ruler-pencil text-primary"/>
-                                    </div>
-                                    <h5 className="text-white mt-3">Grow your market</h5>
-                                    <p className="text-white mt-3">
-                                        Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.
-                                    </p>
-                                </Col>
-                                <Col lg="4">
-                                    <div
-                                        className="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                                        <i className="ni ni-atom text-primary"/>
-                                    </div>
-                                    <h5 className="text-white mt-3">Launch time</h5>
-                                    <p className="text-white mt-3">
-                                        Some quick example text to build on the card title and make
-                                        up the bulk of the card's content.
-                                    </p>
-                                </Col>
-                            </Row>
-                            */}
-                        </Container>
-
-
-                    </section>
-                    {/*
-                    <section className="section section-lg pt-lg-0 section-contact-us">
-                        <Container>
-                            <Row className="justify-content-center mt--300">
-                                <Col lg="8">
-                                    <Card className="bg-gradient-secondary shadow">
-                                        <CardBody className="p-lg-5">
-                                            <h4 className="mb-1">Want to work with us?</h4>
-                                            <p className="mt-0">
-                                                Your project is very important to us.
-                                            </p>
-                                            <FormGroup
-                                                className={classnames("mt-5", {
-                                                    focused: this.state.nameFocused
-                                                })}
-                                            >
-                                                <InputGroup className="input-group-alternative">
-                                                    <InputGroupAddon addonType="prepend">
-                                                        <InputGroupText>
-                                                            <i className="ni ni-user-run" />
-                                                        </InputGroupText>
-                                                    </InputGroupAddon>
-                                                    <Input
-                                                        placeholder="Your name"
-                                                        type="text"
-                                                        onFocus={e => this.setState({ nameFocused: true })}
-                                                        onBlur={e => this.setState({ nameFocused: false })}
-                                                    />
-                                                </InputGroup>
-                                            </FormGroup>
-                                            <FormGroup
-                                                className={classnames({
-                                                    focused: this.state.emailFocused
-                                                })}
-                                            >
-                                                <InputGroup className="input-group-alternative">
-                                                    <InputGroupAddon addonType="prepend">
-                                                        <InputGroupText>
-                                                            <i className="ni ni-email-83" />
-                                                        </InputGroupText>
-                                                    </InputGroupAddon>
-                                                    <Input
-                                                        placeholder="Email address"
-                                                        type="email"
-                                                        onFocus={e => this.setState({ emailFocused: true })}
-                                                        onBlur={e => this.setState({ emailFocused: false })}
-                                                    />
-                                                </InputGroup>
-                                            </FormGroup>
-                                            <FormGroup className="mb-4">
-                                                <Input
-                                                    className="form-control-alternative"
-                                                    cols="80"
-                                                    name="name"
-                                                    placeholder="Type a message..."
-                                                    rows="4"
-                                                    type="textarea"
-                                                />
-                                            </FormGroup>
-                                            <div>
-                                                <Button
-                                                    block
-                                                    className="btn-round"
-                                                    color="default"
-                                                    size="lg"
-                                                    type="button"
-                                                >
-                                                    Send Message
-                                                </Button>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>
+                            <VerticalTabs/>
                         </Container>
                     </section>
-                    */}
-
                 </main>
-                {/*<CardsFooter/>*/}
             </Layout>
         );
     }
 }
 
-const AboutEducation = ({data}) => {
+const AboutResearch = ({data}) => {
     return (
-
-        <AboutEducationTemplate/>
-
+        <AboutResearchTemplate/>
     )
 }
 
-export default AboutEducation
+export default AboutResearch

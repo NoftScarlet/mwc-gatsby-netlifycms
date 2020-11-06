@@ -39,7 +39,7 @@ export const IndexPageTemplate = ({
                                             {heading}
                                         </h3>
 
-                                        <div style={{textAlign: 'left', fontSize: '1.15rem', }}
+                                        <div style={{textAlign: 'left', fontSize: '1.3rem', }}
                                              dangerouslySetInnerHTML={{__html: description}}/>
 
                                     </div>
