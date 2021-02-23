@@ -13,45 +13,48 @@ import PractitionerServiceCard from "../components/PractitionerServiceCard";
 
 
 
-const ServiceNavigation = (props) => (
-    <Container className={"service-navigation"}>
-        <Row>
-            <Col xs={"1"} lg={"2"} className="p-0 show-all-btn d-none">
-                <Button href="#" className="btn-primary w-100 h-100 border-radius-0">
-                    <h3>ALL</h3>
-                </Button>
-            </Col>
-            <Col sm="12" md="12" lg={"10"} className="d-md-flex grid-items p-0" >
-                <Container className={"service-navigation-name-and-service"}>
-                    <Row>
-                        <Col xs={"6"} md={"6"} lg={"4"} className={"p-0 show-all-btn"}>
-                            <Button href="#" className="btn-primary w-100 h-100 border-radius-0">
-                                <h3>ALL</h3>
-                            </Button>
-                        </Col>
-            {props.naviItems.map(item => (
-                <Col xs={"6"} md={"6"} lg={"4"} className="p-0">
-                    <Button className="btn-primary w-100 border-radius-0">
-                        <p>{item.name}</p>
-                        <h6>{item.serviceCategory}</h6>
+const ServiceNavigation = (props) => {
+    return (
+        <Container className={"service-navigation"}>
+            <Row>
+                <Col xs={"1"} lg={"2"} className="p-0 show-all-btn d-none">
+                    <Button href="#" className="btn-primary w-100 h-100 border-radius-0">
+                        <h3>ALL</h3>
                     </Button>
                 </Col>
+                <Col sm="12" md="12" lg={"10"} className="d-md-flex grid-items p-0" >
+                    <Container className={"service-navigation-name-and-service"}>
+                        <Row>
+                            <Col xs={"6"} md={"6"} lg={"4"} className={"p-0 show-all-btn"}>
+                                <Button href="#" className="btn-primary w-100 h-100 border-radius-0">
+                                    <h3>ALL</h3>
+                                </Button>
+                            </Col>
+                            {props.naviItems.map(item => (
+                                <Col xs={"6"} md={"6"} lg={"4"} className="p-0">
+                                    <Button className="btn-primary w-100 border-radius-0">
+                                        <h6>{item.serviceCategory}</h6>
+                                        <p>{'By '+item.name}</p>
 
-            ))}
-                    </Row>
-                </Container>
-            </Col>
-        </Row>
+                                    </Button>
+                                </Col>
 
-        <Row>
-            <Col lg={"6"} className="p-0">
-                <PractitionerServiceCard cardItems={props.naviItems}/>
-            </Col>
-        </Row>
-    </Container>
+                            ))}
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col lg={"6"} className="p-0">
+                    <PractitionerServiceCard cardItems={props.naviItems}/>
+                </Col>
+            </Row>
+        </Container>
 
 
-)
+    )
+}
 
 ServiceNavigation.propTypes = {
     naviItems: PropTypes.arrayOf(

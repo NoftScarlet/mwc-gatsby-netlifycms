@@ -105,92 +105,91 @@ export default function MediaControlCard(props) {
 
     return (
         <>
-            <img src={"https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg"}/>
-            <Button className="btn-warning border-radius-0">
-                Book Appointment
-            </Button><br/>
-
-        <Card className={` border-radius-0 practitioner-card`}>
-            <div>
-                <Typography component="h6" variant="h5">
-                    {props.cardItems[0].name}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                    {props.cardItems[0].role}
-                </Typography>
-                <AppBar position="static" color="default">
-                    <Tabs
-                        value={value}
-                        onChange={handleChange}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        variant="fullWidth"
-                        aria-label="full width tabs example"
-                    >
-                        <Tab label="Service Info" {...a11yProps(0)} />
-                        <Tab label="Experience" {...a11yProps(1)} />
-                        <Tab label="Video Introduction" {...a11yProps(2)} />
-                    </Tabs>
-                </AppBar>
-                <SwipeableViews
-                    axis='x'
-                    index={value}
-                    onChangeIndex={handleChangeIndex}
-                >
-                    <TabPanel value={value} index={0} dir={theme.direction}>
-                        <div className={`${classes.details} `}>
-                            <Container>
-                                <Row>
-                                    <Col md="4" lg={"4"}>
-
-                                        <div style={{height:"1px",backgroundColor:"gray"}}> </div>
-                                    </Col>
-                                    <Col md={"8"} lg={"8"}>
-                                        <div className={classes.content}>
-                                            <strong>Language: </strong>{props.cardItems[0].language}<br/>
-                                            <strong>Location: </strong>{props.cardItems[0].location}<br/>
-                                            <strong>Service: </strong>{props.cardItems[0].serviceProvided}<br/>
-                                        </div>
-                                    </Col>
-                                </Row>
-
-                            </Container>
-
-
-                            <div className={classes.controls}>
-                                <IconButton aria-label="previous">
-                                    <SkipPreviousIcon/>
-                                </IconButton>
-                                <IconButton aria-label="play/pause">
-                                    <PlayArrowIcon className={classes.playIcon}/>
-                                </IconButton>
-                                <IconButton aria-label="next">
-                                    <SkipNextIcon/>
-                                </IconButton>
-                            </div>
-                        </div>
-                    </TabPanel>
-
-
-                    <TabPanel value={value} index={1} dir={theme.direction}>
-                        <div >
-                        <strong>Education/Training: </strong><p>{props.cardItems[0].eduTraining}</p>
-                        <strong>Specialization: </strong><p>{props.cardItems[0].specialization}</p>
-                        <strong>Experience with Musicians: </strong><p>{props.cardItems[0].experienceWithMusicians}</p>
-                        </div>
-                    </TabPanel>
-
-
-                    <TabPanel value={value} index={2} dir={theme.direction}>
+            {props.cardItems.map((item,index)=> (
+                <div key={index+'-prz'} >
+                    <img src={item.image}/>
+                    <Button className="btn-warning border-radius-0">
+                        Book Appointment
+                    </Button><br/>
+                    <Card className={` border-radius-0 practitioner-card`}>
                         <div>
-                        Item Three
+                            <Typography component="h6" variant="h5">
+                                {item.name}
+                            </Typography>
+                            <Typography variant="subtitle1" color="textSecondary">
+                                {item.role}
+                            </Typography>
+                            <AppBar position="static" color="default">
+                                <Tabs
+                                    value={value}
+                                    onChange={handleChange}
+                                    indicatorColor="primary"
+                                    textColor="primary"
+                                    variant="fullWidth"
+                                    aria-label="full width tabs example"
+                                >
+                                    <Tab label="Service Info" {...a11yProps(0)} />
+                                    <Tab label="Experience" {...a11yProps(1)} />
+                                    <Tab label="Video Introduction" {...a11yProps(2)} />
+                                </Tabs>
+                            </AppBar>
+                            <SwipeableViews
+                                axis='x'
+                                index={value}
+                                onChangeIndex={handleChangeIndex}
+                            >
+                                <TabPanel value={value} index={0} dir={theme.direction}>
+                                    <div className={`${classes.details} `}>
+                                        <Container>
+                                            <Row>
+                                                <Col md="4" lg={"4"}>
+
+                                                    <div style={{height:"1px",backgroundColor:"gray"}}> </div>
+                                                </Col>
+                                                <Col md={"8"} lg={"8"}>
+                                                    <div className={classes.content}>
+                                                        <strong>Language: </strong>{item.language}<br/>
+                                                        <strong>Location: </strong>{item.location}<br/>
+                                                        <strong>Service: </strong>{item.serviceProvided}<br/>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+                                        </Container>
+
+                                        <div className={classes.controls}>
+                                            <IconButton aria-label="previous">
+                                                <SkipPreviousIcon/>
+                                            </IconButton>
+                                            <IconButton aria-label="play/pause">
+                                                <PlayArrowIcon className={classes.playIcon}/>
+                                            </IconButton>
+                                            <IconButton aria-label="next">
+                                                <SkipNextIcon/>
+                                            </IconButton>
+                                        </div>
+                                    </div>
+                                </TabPanel>
+
+
+                                <TabPanel value={value} index={1} dir={theme.direction}>
+                                    <div >
+                                        <strong>Education/Training: </strong><p>{item.eduTraining}</p>
+                                        <strong>Specialization: </strong><p>{item.specialization}</p>
+                                        <strong>Experience with Musicians: </strong><p>{item.experienceWithMusicians}</p>
+                                    </div>
+                                </TabPanel>
+
+                                <TabPanel value={value} index={2} dir={theme.direction}>
+                                    <div>
+                                        Item Three
+                                    </div>
+                                </TabPanel>
+                            </SwipeableViews>
                         </div>
-                    </TabPanel>
-                </SwipeableViews>
-            </div>
-
-
-        </Card>
+                    </Card>
+                </div>
+            ))}
 
     </>
 

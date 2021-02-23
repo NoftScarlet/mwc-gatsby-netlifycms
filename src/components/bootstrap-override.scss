@@ -2,8 +2,14 @@
   border-radius: 0;
 }
 
+.btn-secondary {
+  background-color: #f5f8ffe0;
+  border-color: #f5f8ffe0;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 .navbar{
-  background-color: #f4f5f7;
+  background-color: #f5f8ff;
   padding: 1px 5px 1px 20px;
 }
 
@@ -146,6 +152,11 @@ ul {
 
 html {
   scroll-behavior: smooth;
+}
+
+.notification {
+  background-color: none;
+  border-radius: 3px;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -338,6 +349,12 @@ html {
   -moz-transition: opacity 2.4s ease-in;
   -ms-transition: opacity 2.4s ease-in;
   -o-transition: opacity 2.4s ease-in;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
 }
 
 @media (min-width: 992px) {
