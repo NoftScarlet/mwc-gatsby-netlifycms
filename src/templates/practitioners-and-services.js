@@ -4,7 +4,7 @@ import classnames from "classnames";
 import {graphql} from 'gatsby'
 import Layout from '../components/Layout'
 // reactstrap components
-
+import mwc2 from '../../static/img/mwc2.jpg'
 import {
     Button,
     Container,
@@ -350,20 +350,18 @@ class PractitionersAndServicesTemplate extends React.Component {
                 <main ref="main">
                     <div className="position-relative">
                         {/* shape Hero */}
-                        <section className="section section-shaped ext-large">
+                        <section className="section section-shaped ext-large" style={{backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("${mwc2}")`}}>
 
                             <Container className="py-lg-md d-flex">
                                 <div className="col px-0">
                                     <Row>
                                         <Col lg="6">
                                             <h1 className="display-3 text-white">
-                                                Education{" "}
+                                            Practitioners
+                                            and Educators{" "}
                                             </h1>
                                             <p className="lead text-white">
-                                                We offer a diverse set of educational programs taught by health
-                                                professionals and researchers, aimed to inform about physical, mental,
-                                                auditory, and visual wellness.
-
+                                            Our network of associated practitioners and educators consists of a variety of professionals in the greater Ottawa community
                                             </p>
                                             <div className="btn-wrapper">
                                                 <Button
@@ -389,26 +387,9 @@ class PractitionersAndServicesTemplate extends React.Component {
                     </div>
 
 
-                    <section className="section section-lg bg-gradient-default">
+                    <section className="section section-lg bg-dark">
                         <ServiceNavigation naviItems={practitioners} />
-                        <Container>
-                            <Row className="text-center justify-content-center">
-                                <Col lg="10">
-                                    <h2 className="display-3 text-white">We offer programs related to the following
-                                        topics:</h2>
-                                    <p className="lead text-white">
-                                        Basic anatomical and physiological concepts applied to artists<br/>
-                                        Analysis and prevention of musicians' injuries<br/>
-                                        Strategies for minimizing effects of performance anxiety<br/>
-                                        Applying mindfulness to music performance<br/>
-                                        Auditory health and hearing loss prevention<br/>
-                                        Health problems faced by musicians<br/>
-                                        Available health approaches to improve musicians’ wellness<br/>
-                                        Development of healthy habits and practice strategies
-                                    </p>
-                                </Col>
-                            </Row>
-                        </Container>
+
                     </section>
                 </main>
             </Layout>
