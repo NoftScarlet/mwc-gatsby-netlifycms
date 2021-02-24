@@ -86,6 +86,19 @@ const useStyles = makeStyles((theme) => ({
     playIcon: {
         height: 38,
         width: 38,
+    },
+    cardImage: {
+        width: '30%',
+        height:'400px',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: '50% 50%',
+        '@media (max-width: 767px)' : {
+          width: '50%'
+        }
+    },
+    contactButton: {
+        width:'30%'
     }
 }));
 
@@ -107,10 +120,13 @@ export default function MediaControlCard(props) {
         <>
             {props.cardItems.map((item,index)=> (
                 <div key={index+'-prz'} >
-                    <img src={item.image}/>
-                    <Button className="btn-warning border-radius-0">
-                        Book Appointment
-                    </Button><br/>
+                    <div >
+                        <div className={classes.cardImage} style={{backgroundImage:`url(${item.image})`}}/>
+                        <Button className={`${classes.contactButton} btn-warning border-radius-0 `}>
+                          Contact Info
+                        </Button>
+                    </div>
+
                     <Card className={` border-radius-0 practitioner-card`}>
                         <div>
                             <Typography component="h6" variant="h5">

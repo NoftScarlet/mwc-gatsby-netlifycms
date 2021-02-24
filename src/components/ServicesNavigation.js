@@ -46,7 +46,7 @@ const ServiceNavigation = (props) => {
             </Row>
 
             <Row>
-                <Col lg={"6"} className="p-0">
+                <Col sm={"12"} className="p-0">
                     <PractitionerServiceCard cardItems={props.naviItems}/>
                 </Col>
             </Row>

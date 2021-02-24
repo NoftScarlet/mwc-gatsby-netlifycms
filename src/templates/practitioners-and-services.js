@@ -27,7 +27,7 @@ const practitioners = [
         specialization:"Evidence-based Spine Care | Musculoskeletal pain | Injury Prevention",
         experienceWithMusicians:"Treating injuries related to playing an instrument since 2001",
         language:"English",
-        image:"../img/geoff.jpg",
+        image:"https://piano.uottawa.ca/mwc/img/geoff.jpg",
         moreInfo:[
             "https://www.integrateottawa.ca/geoff-outerbridge-msc-dc",
             "https://www.worldspinecare.org/"
@@ -63,7 +63,7 @@ const practitioners = [
         specialization:"Musculoskeletal pain | Biomechanics and Injury prevention",
         experienceWithMusicians:"",
         language:"English and Spanish",
-        image:"/img/Dapne.jpg",
+        image:"https://piano.uottawa.ca/mwc/img/Dapne.jpg",
         moreInfo:"",
         bookAppointments:"",
 
@@ -96,7 +96,7 @@ const practitioners = [
         specialization:"Performance anxiety | Depression",
         experienceWithMusicians:"Collaborated in research on music performance anxiety",
         language:"English and French",
-        image:"/img/evelyn.jpg",
+        image:"https://piano.uottawa.ca/mwc/img/evelyn.jpg",
         moreInfo:"https://mbctottawa.wordpress.com/evelyn-tan/",
         bookAppointments:"https://mbctottawa.wordpress.com/contact/",
 
@@ -128,7 +128,7 @@ const practitioners = [
         specialization:"Musculoskeletal pain | Injury Prevention",
         experienceWithMusicians:"Experience with professional musicians since 1998, including members of NACO",
         language:"English",
-        image:"/img/patricia.jpg",
+        image:"https://piano.uottawa.ca/mwc/img/patricia.jpg",
         moreInfo:"http://www.phyzio.biz/patriciaPalmer.php",
         bookAppointments:"http://www.phyzio.biz/contactUs.php",
 
@@ -160,7 +160,7 @@ const practitioners = [
         specialization:"Motor learning skills training | Sensorimotor skills training",
         experienceWithMusicians:"Addressing playing-related physical pain - Teaching healthy habits - Mind-body awareness for musicians, including pre-performance routines and daily practice tools",
         language:"English",
-        image:"/img/jillian.JPG",
+        image:"https://piano.uottawa.ca/mwc/img/jillian.JPG",
         moreInfo:"https://www.movingthroughmusic.com/biography.html",
         bookAppointments:"https://www.movingthroughmusic.com/contact.html",
 
@@ -194,7 +194,7 @@ const practitioners = [
         specialization:"Postural Restoration | Body Awareness",
         experienceWithMusicians:"35 years teaching yoga for chronic pain related to playing an instrument | 35 years teaching guitar",
         language:"English",
-        image:"/img/michael.png",
+        image:"https://piano.uottawa.ca/mwc/img/michael.png",
         moreInfo:[
             "http://www.michaelfahey.ca/",
             "shorelinestudio.ca"
@@ -229,7 +229,7 @@ const practitioners = [
         specialization:"Mental skills for music performance excellence and public presentations (dissertations, conference speeches, etc.)",
         experienceWithMusicians:"Second Flutist, Montreal Symphony Orchestra, 1978 to 2014 | Associate Professor of Flute, McGill University 1982 | Mental Performance Skills Coach, National Youth Orchestra of Canada 2019 | Flute instructor at National Youth Orchestra of Canada, Domaine Forget, and CAMMAC, retired",
         language:"English and French",
-        image:"/img/carolyn.png",
+        image:"https://piano.uottawa.ca/mwc/img/carolyn.png",
         moreInfo:"https://www.mcgill.ca/music/carolyn-christie",
         bookAppointments:"mailto:carolyn@christieperformance.com",
 
@@ -294,7 +294,7 @@ const practitioners = [
         specialization:"Repetitive strain injuries | Performance anxiety",
         experienceWithMusicians:"",
         language:"English and French",
-        image:"/img/alexander.jpg",
+        image:"https://piano.uottawa.ca/mwc/img/alexander.jpg",
         moreInfo:"https://ottawaalexandertechnique.ca/en/teachers/francis-caron/",
         bookAppointments:"https://ottawaalexandertechnique.ca/en/contact/",
 
