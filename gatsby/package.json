@@ -36,6 +36,6 @@
     "react-jss": "^8.6.1",
     "react-swipeable-views": "^0.13.1",
     "react-swipeable-views-utils": "^0.13.1",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   }
 }
